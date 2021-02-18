@@ -5,6 +5,9 @@ import 'firebase/firestore';
 import logo from './logo.svg';
 import './App.css';
 
+/*global App, _users*/
+/*eslint no-undef: "error"*/
+
 const firebaseConfig = {
   apiKey: "AIzaSyAhBE0EfVjaL4NypnSJnOwLr9CneSpZfiY",
   authDomain: "plusma-1927f.firebaseapp.com",
@@ -19,7 +22,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const {users, setUsers} = useState([]);
+  const [users, setUsers] = useState([]);
   const handleFetchButton = async () => {
     const db = firebase.firestore();
     const snapshot = await db
@@ -32,15 +35,16 @@ function App() {
         ...doc.data()
       });
     });
+    setUsers(_users);
+  };
 
-  setUsers(_users);
-};
-
-const userListItems = users.map(user => {
-  return (
-    <li key={user.userId}>{user.name} : {user.location} : {user.age}</li>
-  );
-});
+  const userListItems = users.map(user => {
+    return (
+      <li key={user.userId}>
+        {user.name} : {user.age}: {user.location} 
+      </li>
+    );
+  });
 
   return (
     <div className="App">
