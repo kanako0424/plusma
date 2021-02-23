@@ -21,41 +21,9 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+const helloWorld = <p>hello world!</p>
 function App() {
-  const [users, setUsers] = useState([]);
-  const handleFetchButton = async () => {
-    const db = firebase.firestore();
-    const snapshot = await db
-      .collection('users')
-      .get();
-    const _users = [];
-    snapshot.forEach(doc => {
-      _users.push({
-        userId: doc.id,
-        ...doc.data()
-      });
-    });
-    setUsers(_users);
-  };
-
-  const userListItems = users.map(user => {
-    return (
-      <li key={user.userId}>
-        {user.name} : {user.age}: {user.location} 
-      </li>
-    );
-  });
-
-  return (
-    <div className="App">
-      <h1>Hello World!</h1>
-      <button onClick={handleFetchButton}>取得</button>
-      <ul>{userListItems}</ul>
-    </div>
-  );
+  return helloWorld;
 }
-
-//this is a test for git pull origin main
-
 
 export default App;
