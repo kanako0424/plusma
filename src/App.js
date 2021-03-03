@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
-/*global App, _users*/
+
 /*eslint no-undef: "error"*/
 
 const firebaseConfig = {
@@ -26,40 +26,10 @@ if (!firebase.apps.length) {
 }
 
 function App() {
-  const [posts, setPosts] = useState([]);
-  const handleFetchButton = async () => {
-    const db = firebase.firestore();
-    const snapshot = await db
-      .collection('posts')
-      .get();
-    const _posts = [];
-    snapshot.forEach(doc => {
-      _posts.push({
-        postId: doc.id,
-        ...doc.data()
-      });
-    });
-    setPosts(_posts);
-  };
-
-  const postListItems = posts.map(post => {
-    return (
-      <li key={post.postId}>
-        {post.postName} : {post.price}: {post.imageUrl} 
-      </li>
-    );
-  });
-
+ 
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-      <button onClick={handleFetchButton}>取得</button>
-      <ul>{postListItems}</ul>
-    </div>
+    <div></div>
   );
 }
-
-//this is a test for git pull origin main
-
 
 export default App;
