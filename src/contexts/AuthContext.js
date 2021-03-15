@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../firebase"
+import { auth, db } from "../firebase"
+import firebase from "firebase/app"
 
 const AuthContext = React.createContext()
 
@@ -36,9 +37,27 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user)
       setLoading(false)
+      if (!user) {
+        // 匿名ログインする
+        firebase.auth().signInAnonymously();
+      }
+      // ログイン時
+      else {
+        // ログイン済みのユーザー情報があるかをチェック
+        var userDoc = await firebase.firestore().collection('users').doc(user.uid).get();
+        if (!userDoc.exists) {
+          // Firestore にユーザー用のドキュメントが作られていなければ作る
+          await userDoc.ref.set({
+            nickname: '名無しさん',
+            profileDesc: '',
+            linkForMercari: '',
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+        }
+      }
     })
 
     return unsubscribe
