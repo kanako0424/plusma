@@ -19,6 +19,7 @@ import PostDescription from "./PostDescription"
 
 
 function App() {
+  
 
   return (
     <div>
@@ -31,7 +32,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/create-post" component={CreatePost} />
-            {/* <Route path={postId} component={PostDescription} /> */}
+            <Route path="/:postId" component={PostDescription} />
           </Switch>
         </AuthProvider>
       </Router>

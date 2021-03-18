@@ -30,7 +30,7 @@ function CreatePost() {
     const postId = docId;
     const authorId = user.uid;
     const userRef = db.collection('users').doc(authorId);
-    userRef.collection('createdPosts').add({
+    userRef.collection('createdPosts').doc(postId).set({
       postId: postId,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
