@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
+import { db } from "../firebase"
 import { Link, useHistory } from "react-router-dom"
-import Posts from './Posts'
 import NavBar from './NavBar'
+import Post from './Post'
 
 export default function Dashboard() {
   const [error, setError] = useState("")
@@ -33,6 +34,38 @@ export default function Dashboard() {
     } 
   }
 
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const readData = db.collection('posts')
+      .orderBy('createdAt', 'desc')
+      .onSnapshot(snapshot => {
+        const postArray = snapshot.docs.map(doc => {
+          return {
+            postName: doc.postName,
+            ...doc.data()
+          }
+        });
+        setPosts(postArray);
+      });
+      return () => {
+        readData();
+      }
+  }, []);
+  
+  const postListItems = posts.map(post => {
+    console.log(post);
+    return(
+      <Post 
+        key={post.postId}
+        imageUrl={post.imageUrl}
+        postId={post.postId}
+        authorId={post.authorId}
+        postName={post.postName}
+        price={post.price}
+      />
+    );
+  });
+
   return (
     <>
     <h4>Plusma</h4>
@@ -57,8 +90,10 @@ export default function Dashboard() {
       </div>
       {letsLoginStatement}
     </div>
+    <div className="container">
+      <ul className="row justify-content-center">{postListItems}</ul>
+    </div>
     <NavBar />
-    <Posts />
     </>
   )
 }

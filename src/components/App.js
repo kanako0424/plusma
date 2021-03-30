@@ -12,7 +12,7 @@ import CreatePost from "./CreatePost"
 //import 'firebase/firestore'
 // import logo from './logo.svg';
 import '../App.css';
-import PostDescription from "./PostDescription"
+import PostDetails from "./PostDetails"
 
 
 /*eslint no-undef: "error"*/
@@ -32,7 +32,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/create-post" component={CreatePost} />
-            <Route path="/:postId" component={PostDescription} />
+            <Route path="/posts/:id" component={PostDetails} />
           </Switch>
         </AuthProvider>
       </Router>

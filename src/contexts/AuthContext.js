@@ -42,16 +42,18 @@ export function AuthProvider({ children }) {
       setLoading(false)
       if (!user) {
         // 匿名ログインする
-        firebase.auth().signInAnonymously();
+        auth.signInAnonymously();
       }
       // ログイン時
       else {
         // ログイン済みのユーザー情報があるかをチェック
-        var userDoc = await firebase.firestore().collection('users').doc(user.uid).get();
+        var userDoc = await db.collection('users').doc(user.uid).get();
         if (!userDoc.exists) {
           // Firestore にユーザー用のドキュメントが作られていなければ作る
+          const userId = user.uid;
           await userDoc.ref.set({
             nickname: '名無しさん',
+            userId: userId,
             profileDesc: '',
             linkForMercari: '',
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),

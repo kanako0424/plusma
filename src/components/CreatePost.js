@@ -18,13 +18,12 @@ function CreatePost() {
   const [link, setLink] = useState('');
   const [publishedDate, setPublishedDate] = useState('');
   const [rating, setRating] = useState('');
-  const [scoreOfExam, setScoreOfExam] = useState('');
+  const [scoreOfPracticeExam, setscoreOfPracticeExam] = useState('');
   const [memo, setMemo] = useState(false);
   const [answer, setAnswer] = useState(false);
   const [category, setCategory] = useState('');
   const [universityName, setUniversityName] = useState('');
-  const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState(null);
 
   const addCreatedPost = (docId) => {
     const postId = docId;
@@ -34,36 +33,23 @@ function CreatePost() {
       postId: postId,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
-      console.log('succeeded!')
+      console.log('createdPost is created')
     }).catch((err) => {
       console.log(err)
     })
   }
 
-  const handleChange = event => {
-    if (event.target.files[0]) {
-      setImage(event.target.files[0]);
-    }
+  const onImageChange = async event => {
+    let image = event.target.files[0];
+    const imageRef = storage.ref('images').child(image.name);
+    await imageRef.put(image);
+    setImageUrl(await imageRef.getDownloadURL())
+    image = '';
   };
   
   const addPost = (event) => {
     event.preventDefault();
-    
-    const uploadTask = storage.ref('images').child(image.name).put(image);
-    uploadTask.on("state_changed", snapshot => {
-      //progress
-    }, (err) => {
-      console.log(err);
-    }, () => {
-      storage.ref("images").child(image.name).getDownloadURL().then((url) => {
-        console.log(url);
-        setImageUrl(url);
-      });
-    })
 
-    console.log(imageUrl)
-
-    
     let type = ''
     if (memo) {
       if (answer) {
@@ -78,11 +64,12 @@ function CreatePost() {
         type = null
       }
     } 
-        
+    
     const postRef = postsRef.doc();
-
-    console.log(image);
+    const postId = postRef.id;
+    
     postRef.set({
+      postId: postId,
       postName: postName,
       imageUrl: imageUrl,
       authorId: user.uid,
@@ -91,18 +78,17 @@ function CreatePost() {
       link: link,
       publishedDate: publishedDate,
       rating: rating,
-      scoreOfExam: scoreOfExam,
+      scoreOfPracticeExam: scoreOfPracticeExam,
       type: type,
       category: category,
       universityName: universityName,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }).then(
-      console.log('success!')
+      console.log('post is created')
     ).catch((err) => {
       console.log(err)
     })
 
-    const postId = postRef.id;
 
     setPostName('');
     setDescription('');
@@ -110,10 +96,9 @@ function CreatePost() {
     setLink('');
     setPublishedDate('');
     setRating('');
-    setScoreOfExam('');
+    setscoreOfPracticeExam('');
     setCategory('');
     setUniversityName('');
-    setImage('');
     document.getElementById('answer').checked = false;
     document.getElementById('memo').checked = false;
     setMemo(false);
@@ -126,7 +111,7 @@ function CreatePost() {
       <h2 className="">投稿の登録・編集</h2>
       <label htmlFor="photo">
         <FontAwesomeIcon icon={faImages} size="lg" />
-        <input id="photo" className="inputPhoto" type="file" name="image" accept="image/*" onChange={handleChange} />
+        <input id="photo" className="inputPhoto" type="file" name="image" accept="image/*" onChange={onImageChange}/>
       </label>
       <label className="d-flex justify-content-center">
         商品名
@@ -134,7 +119,7 @@ function CreatePost() {
       </label>
       <label className="d-flex justify-content-center">
         出版年
-        <input className="inputPhoto" type="month" value={publishedDate} onChange={event => setPublishedDate(event.target.value)} />
+        <input className="" type="month" value={publishedDate} onChange={event => setPublishedDate(event.target.value)} />
       </label>
       <label className="d-flex justify-content-center">
         価格
@@ -165,7 +150,7 @@ function CreatePost() {
       </label>
       <label className="d-flex justify-content-center">
         模試の点数
-        <input type="number" value={scoreOfExam} onChange={event => setScoreOfExam(event.target.value)} />
+        <input type="number" value={scoreOfPracticeExam} onChange={event => scoreOfPracticeExam(event.target.value)} />
       </label>
       <label className="d-flex justify-content-center">
         合格大学
