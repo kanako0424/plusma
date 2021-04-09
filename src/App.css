@@ -1,40 +1,35 @@
-.App {
-  text-align: center;
+body {
+  background-color: #F3EFE4 !important;
+  padding-bottom: 10vh;
+  font-weight: 600 !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p {
+  margin-top: 15px !important;
+  margin-bottom: 0 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.header {
+  background-color: #F3EFE4;
   flex-direction: column;
+  display: inline-block;
+  width: 100%;
+  padding: 20px 5px 30px;
+  height: 60px;
+  position: fixed;
+  top: 0px;
+}
+
+.header button {
+  border: none;
+  background: #F3EFE4;
+  height: 100%;
+}
+
+.title {
+  font-size: 150%;
+  font-weight: 600;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .list-styles {
@@ -42,17 +37,94 @@
   display: inline;
 }
 
-
-.preview {
-  width: 200px;
+.display_none {
+  display: none;
 }
 
-.previewImg {
-  object-fit: contain;
+.nav_bar {
+  background-color: #F3EFE4;
+  box-shadow:  11px 11px 21px #e2ded4,
+             -11px -11px 21px #fffff4;
+  display: flex;
+  margin: auto;
+  width: 90%;
+  height: 7vh;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 10px;
+  left: 5%;
+}
+.nav_bar a {
+  color: #282c34;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.post {
+  color: #282c34;
+  background: #F3EFE4;
+  box-shadow:  5px 5px 16px #ddd9cf,
+             -5px -5px 16px #fffff9;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  width: 47%;
+  justify-content: space-around;
+}
+
+.post a {
+  color: #282c34;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 140px;
+  margin: auto;
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block; 
+}
+
+.thumbnail img {
   width: 100%;
   height: 100%;
+  border-radius: 15px;
 }
 
-.inputPhoto {
-  display: none;
+.price-tag {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-color: #282c34;
+  opacity: 0.75;
+  color: #F3EFE4;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.post-details {
+  width: 85%;
+  box-sizing: border-box;
+  padding: 60px 0px;
+  margin: auto;
+}
+
+.post-details img {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.post-details table {
+  width: 100%;
 }

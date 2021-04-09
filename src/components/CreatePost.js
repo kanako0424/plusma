@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 import ImagePreview from './ImagePreview'
+import Header from './Header';
 
 function CreatePost() {
   
@@ -108,7 +109,7 @@ function CreatePost() {
 
   return (
     <div className="">
-      <h2 className="">投稿の登録・編集</h2>
+      <Header title={"投稿"}/>
       <label htmlFor="photo">
         <FontAwesomeIcon icon={faImages} size="lg" />
         <input id="photo" className="inputPhoto" type="file" name="image" accept="image/*" onChange={onImageChange}/>
