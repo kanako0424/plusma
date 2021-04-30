@@ -6,12 +6,11 @@ import Header from './Header';
 
 
 //firebaseからデータを取得&ユーザーのニックネームを表示&ユーザーが作成者だったら編集と削除ができるようにする
-function PostDetails({ match, nickname }) {
-  console.log(nickname)
+function PostDetails({ match }) {
+  console.log(match)
   const { currentUser } = useAuth()
   const [posts, setPosts] = useState([]);
-  // const [nickname, setNickname] = useState('');
-  const [deleteButton, setDeleteButton] = useState('');
+  const [authorName, setAuthorName] = useState();
 
   const postId = match.params.id;
   
@@ -25,44 +24,27 @@ function PostDetails({ match, nickname }) {
       });
   
       setPosts(postArray);
-      console.log(posts)
-      
-      // const nickName = posts.map(post => {
-      //   const authorId = post[0].authorId
-      //   db.collection('users').doc().get(authorId).then(doc => {
-      //     return (
-      //       doc.nickname
-      //     )
-      //   })
-      // });
-      // setNickname(nickName);
-      // console.log(nickname);
-  
-      const deleteButton = posts.map(post => {
-        if (currentUser.uid === post[0].authorId) {
-          
-          return (
-            <div>
-              <button>この投稿を削除する</button>
-          </div>
-          )
-        } else {
-          return null;
-        }
-      });
-      setDeleteButton(deleteButton);
+      console.log(posts)  
     });
   }, []);
 
-  console.log(nickname, deleteButton)
+
+
   const postListItems = posts.map(post => {
+
+    const authorId = post[0].authorId;
+    db.collection("users").doc(authorId).get(authorId).then((snapshot) => {
+      console.log(snapshot.data().nickname);
+      const authorName = snapshot.data().nickname;
+      setAuthorName(authorName)
+    });
 
     return(
       <PostDetailsPost 
         key={post[0].postId}
         postName={post[0].postName}
+        nickname={authorName}
         imageUrl={post[0].imageUrl}
-        nickname={nickname}
         publishedDate={post[0].publishedDate}
         price={post[0].price}
         type={post[0].type}
@@ -73,7 +55,6 @@ function PostDetails({ match, nickname }) {
         universityName={post[0].universityName}
         description={post[0].description}
         postId={post[0].postId}
-        deleteButton={deleteButton}
       />
     )
   })

@@ -43,8 +43,7 @@ p {
 
 .nav_bar {
   background-color: #F3EFE4;
-  box-shadow:  11px 11px 21px #e2ded4,
-             -11px -11px 21px #fffff4;
+  box-shadow:  11px 11px 21px #e2ded4;
   display: flex;
   margin: auto;
   width: 90%;
@@ -63,6 +62,7 @@ p {
 }
 
 .posts {
+  margin-top: 60px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

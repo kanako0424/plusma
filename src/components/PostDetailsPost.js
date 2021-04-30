@@ -22,9 +22,12 @@ function PostDetailsPost({
     <div className="post-details">
       <img src={imageUrl} alt="商品サムネイル"/>
       <h6>{postName}</h6>
-      <p>作成者:{nickname}</p>
       <table>
         <tbody className="container">
+          <tr className="row">
+            <td className="col-4">作成者</td>
+            <td className="col-8">{nickname}</td>
+          </tr>
           <tr className="row">
             <td className="col-4">出版年</td>
             <td className="col-8">{publishedDate}</td>
@@ -43,7 +46,7 @@ function PostDetailsPost({
           </tr>
           <tr className="row">
             <td className="col-4">商品リンク</td>
-            <td className="col-8"><a target="_blank" href={link}>{link}</a></td>
+            <td className="col-8"><a target="_blank" rel="noreferrer" href={link}>{link}</a></td>
           </tr>
         </tbody>
       </table>

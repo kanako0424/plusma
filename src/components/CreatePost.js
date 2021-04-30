@@ -5,7 +5,6 @@ import '../App.css'
 import NavBar from './NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
-import ImagePreview from './ImagePreview'
 import Header from './Header';
 
 function CreatePost() {
