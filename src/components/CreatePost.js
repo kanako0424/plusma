@@ -107,67 +107,68 @@ function CreatePost() {
   }
 
   return (
-    <div className="">
+    <>
       <Header title={"投稿"}/>
-      <label htmlFor="photo">
-        <FontAwesomeIcon icon={faImages} size="lg" />
-        <input id="photo" className="inputPhoto" type="file" name="image" accept="image/*" onChange={onImageChange}/>
-      </label>
-      <label className="d-flex justify-content-center">
-        商品名
-        <input type="text" value={postName} onChange={event => setPostName(event.target.value)} />
-      </label>
-      <label className="d-flex justify-content-center">
-        出版年
-        <input className="" type="month" value={publishedDate} onChange={event => setPublishedDate(event.target.value)} />
-      </label>
-      <label className="d-flex justify-content-center">
-        価格
-        <input type="number" value={price} onChange={event => setPrice(event.target.value)} />
-      </label>
-      <div className="checkbox-container d-flex">
-        種類
-        <input id="memo" type="checkbox" value={memo} onChange={event => setMemo(!memo)} />
-        <label htmlFor="memo" className="d-flex justify-content-center">
-        メモ
+      <div className="d-flex container row">
+        <label htmlFor="photo" className="col-4">
+          <FontAwesomeIcon icon={faImages} size="lg" />
         </label>
-        <input id="answer" type="checkbox" value={answer} onChange={event => setAnswer(!answer)} />
-        <label htmlFor="answer" className="d-flex justify-content-center">
-          解答
+        <input id="photo" className="inputPhoto col-8" type="file" name="image" accept="image/*" onChange={onImageChange}/>
+        <label htmlFor="postName" className="col-4">
+          商品名
         </label>
+        <input type="text" id="postName" value={postName} onChange={event => setPostName(event.target.value)} className="col-8"/>
+        <label htmlFor="publishedDate" className="col-4">
+          出版年
+        </label>
+        <input className="col-8" id="publishedDate" type="month" value={publishedDate} onChange={event => setPublishedDate(event.target.value)} />
+        <label htmlFor="price" className="col-4">
+          価格
+        </label>
+        <input type="number" id="price" className="col-8" value={price} onChange={event => setPrice(event.target.value)} />
+        <div className="checkbox-container col-12">
+          <span className="col-4">種類</span>
+          <input id="memo" type="checkbox" className="col-1" value={memo} onChange={event => setMemo(!memo)} />
+          <label htmlFor="memo" className="col-3">
+          メモ
+          </label>
+          <input id="answer" type="checkbox" className="col-1" value={answer} onChange={event => setAnswer(!answer)} />
+          <label htmlFor="answer" className="col-3">
+            解答
+          </label>
+        </div>
+        <label htmlFor="category" className="col-4">
+          カテゴリー
+        </label>
+        <input type="text" id="category" className="col-8" value={category} onChange={event => setCategory(event.target.value)} />
+        <label htmlFor="link" className="col-4">
+          商品リンク
+        </label>
+        <input type="text" id="link" className="col-8" value={link} onChange={event => setLink(event.target.value)} />
+        <label htmlFor="rating" className="col-4">
+          評定
+        </label>
+        <input type="number" id="rating" className="col-8" value={rating} onChange={event => setRating(event.target.value)} />
+        <label htmlFor="score" className="col-4">
+          模試の点数
+        </label>
+        <input htmlFor="score" type="number" className="col-8" value={scoreOfPracticeExam} onChange={event => scoreOfPracticeExam(event.target.value)} />
+        <label htmlFor="university" className="col-4">
+          合格大学
+        </label>
+        <input type="text" id="university" className="col-8" value={universityName} onChange={event => setUniversityName(event.target.value)} />
+        <p>推しポイント!</p>
+        <textarea value={description} className="col-12" onChange={event => setDescription(event.target.value)}></textarea>
+        <button 
+          type="submit" 
+          className="col-6 margin-center"
+          style={{ maxWidth: "400px" }}
+          disabled={!postName}
+          onClick={addPost}
+          >投稿する</button>
       </div>
-      <label className="d-flex justify-content-center">
-        カテゴリー
-        <input type="text" value={category} onChange={event => setCategory(event.target.value)} />
-      </label>
-      <label className="d-flex justify-content-center">
-        商品リンク
-        <input type="text" value={link} onChange={event => setLink(event.target.value)} />
-      </label>
-      <label className="d-flex justify-content-center">
-        評定
-        <input type="number" value={rating} onChange={event => setRating(event.target.value)} />
-      </label>
-      <label className="d-flex justify-content-center">
-        模試の点数
-        <input type="number" value={scoreOfPracticeExam} onChange={event => scoreOfPracticeExam(event.target.value)} />
-      </label>
-      <label className="d-flex justify-content-center">
-        合格大学
-        <input type="text" value={universityName} onChange={event => setUniversityName(event.target.value)} />
-      </label>
-      <p>推しポイント!</p>
-      <label className="d-flex justify-content-center">
-        <textarea value={description} onChange={event => setDescription(event.target.value)}></textarea>
-      </label>
-      <button 
-        type="submit" 
-        style={{ maxWidth: "400px" }}
-        disabled={!postName}
-        onClick={addPost}
-      >投稿する</button>
       <NavBar />
-    </div>
+    </>
   )
 };
 

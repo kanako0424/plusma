@@ -1,5 +1,4 @@
 import React from 'react'
-//import { db } from '../firebase'
 import NavBar from './NavBar'
 
 function PostDetailsPost({ 
@@ -21,32 +20,32 @@ function PostDetailsPost({
   return(
     <div className="post-details">
       <img src={imageUrl} alt="商品サムネイル"/>
-      <h6>{postName}</h6>
+      <h6><strong>{postName}</strong></h6>
       <table>
         <tbody className="container">
           <tr className="row">
-            <td className="col-4">作成者</td>
-            <td className="col-8">{nickname}</td>
+            <td className="col-5">作成者</td>
+            <td className="col-7">{nickname}</td>
           </tr>
           <tr className="row">
-            <td className="col-4">出版年</td>
-            <td className="col-8">{publishedDate}</td>
+            <td className="col-5">出版年</td>
+            <td className="col-7">{publishedDate}</td>
           </tr>
           <tr className="row">
-            <td className="col-4">価格</td>
-            <td className="col-8">{price} 円</td>
+            <td className="col-5">価格</td>
+            <td className="col-7">{price} 円</td>
           </tr>
           <tr className="row">
-            <td className="col-4">種類</td>
-            <td className="col-8">{type}</td>
+            <td className="col-5">種類</td>
+            <td className="col-7">{type}</td>
           </tr>
           <tr className="row">
-            <td className="col-4">カテゴリー</td>
-            <td className="col-8">{category}</td>
+            <td className="col-5">カテゴリ</td>
+            <td className="col-7">{category}</td>
           </tr>
           <tr className="row">
-            <td className="col-4">商品リンク</td>
-            <td className="col-8"><a target="_blank" rel="noreferrer" href={link}>{link}</a></td>
+            <td className="col-5">商品リンク</td>
+            <td className="col-7"><a target="_blank" rel="noreferrer" href={link}>{link}</a></td>
           </tr>
         </tbody>
       </table>
@@ -54,16 +53,16 @@ function PostDetailsPost({
       <table>
         <tbody className="container">
           <tr className="row">
-            <td className="col-4">評定</td>
-            <td className="col-8">{rating} / 5</td>
+            <td className="col-5">評定</td>
+            <td className="col-7">{rating} / 5</td>
           </tr>
           <tr className="row">
-            <td className="col-4">模試の点数</td>
-            <td className="col-8">{scoreOfPracticeExam}</td>
+            <td className="col-5">模試の点数</td>
+            <td className="col-7">{scoreOfPracticeExam}</td>
           </tr>
           <tr className="row">
-            <td className="col-4">合格大学</td>
-            <td className="col-8">{universityName}</td>
+            <td className="col-5">合格大学</td>
+            <td className="col-7">{universityName}</td>
           </tr>
         </tbody>
       </table>

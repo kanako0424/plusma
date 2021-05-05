@@ -2,6 +2,21 @@ body {
   background-color: #F3EFE4 !important;
   padding-bottom: 10vh;
   font-weight: 600 !important;
+  padding-top: 60px;
+}
+
+.row {
+  padding: 10px !important;
+}
+
+figure {
+  margin: 0px !important;
+}
+
+.margin-auto {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
 }
 
 p {
@@ -61,24 +76,10 @@ p {
   align-items: center;
 }
 
-.posts {
-  margin-top: 60px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 10px;
-}
-
 .post {
   color: #282c34;
   background: #F3EFE4;
-  box-shadow:  5px 5px 16px #ddd9cf,
-             -5px -5px 16px #fffff9;
-  padding: 10px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  width: 47%;
-  justify-content: space-around;
+  padding: 10px !important;
 }
 
 .post a {
@@ -119,7 +120,6 @@ p {
 }
 
 .post-details img {
-  display: flex;
   width: 100%;
   justify-content: center;
   margin: 10px auto;

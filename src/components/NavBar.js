@@ -11,7 +11,7 @@ function NavBar() {
   return (
     <div className="nav_bar">
       <a href="/">{home}</a>
-      <a href="/serch">{search}</a>
+      <a href="/search">{search}</a>
       <a href="/create-post">{plus}</a>
       <a href="/my-page">{user}</a>
     </div>

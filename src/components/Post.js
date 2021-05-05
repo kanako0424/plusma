@@ -5,7 +5,8 @@ import '../App.css';
 function Post({ postId, postName, nickname, price, imageUrl }) {
 
   return (
-    <figure className="post">
+    // react-bootstrapでメディアクエリを実装する
+    <figure className="post col-6 col-md-4 col-lg-3">
       <Link 
         target="_blank" 
         to={{

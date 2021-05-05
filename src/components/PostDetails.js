@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { db } from "../firebase"
-import { useAuth } from "../contexts/AuthContext"
 import PostDetailsPost from './PostDetailsPost';
 import Header from './Header';
 
 
 //firebaseからデータを取得&ユーザーのニックネームを表示&ユーザーが作成者だったら編集と削除ができるようにする
 function PostDetails({ match }) {
-  console.log(match)
-  const { currentUser } = useAuth()
   const [posts, setPosts] = useState([]);
   const [authorName, setAuthorName] = useState();
 
   const postId = match.params.id;
   
   useEffect(() => {
-    db.collection('posts').where("postId", "==", postId).onSnapshot((snapshot) => {
+    db.collection('posts').where("postId", "==", postId).get().then((snapshot) => {
       const postArray = snapshot.docs.map(doc => {
         return [{
           postName: doc.postName,
@@ -24,20 +21,19 @@ function PostDetails({ match }) {
       });
   
       setPosts(postArray);
-      console.log(posts)  
+      console.log(posts);
     });
   }, []);
-
-
 
   const postListItems = posts.map(post => {
 
     const authorId = post[0].authorId;
-    db.collection("users").doc(authorId).get(authorId).then((snapshot) => {
-      console.log(snapshot.data().nickname);
-      const authorName = snapshot.data().nickname;
-      setAuthorName(authorName)
-    });
+    db.collection("users").doc(authorId).get()
+      .then((snapshot) => {
+        const author = snapshot.data().nickname;
+        setAuthorName(author)
+      });
+      console.log(authorName);
 
     return(
       <PostDetailsPost 
@@ -58,6 +54,8 @@ function PostDetails({ match }) {
       />
     )
   })
+
+  
   
   return(
     <>

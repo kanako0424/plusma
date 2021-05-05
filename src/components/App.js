@@ -29,7 +29,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/create-post" component={CreatePost} />
-            <Route path="/serch" component={Search} />
+            <Route path="/search" component={Search} />
             <Route path="/posts/:id" component={PostDetails} />
           </Switch>
         </AuthProvider>
