@@ -9,6 +9,7 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import CreatePost from "./CreatePost"
 import Search from "./Search"
+import Mypage from "./Mypage"
 //import firebase from 'firebase/app'
 //import 'firebase/firestore'
 // import logo from './logo.svg';
@@ -30,6 +31,7 @@ function App() {
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/create-post" component={CreatePost} />
             <Route path="/search" component={Search} />
+            <Route path="/my-page" component={Mypage} />
             <Route path="/posts/:id" component={PostDetails} />
           </Switch>
         </AuthProvider>
