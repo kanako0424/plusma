@@ -1,52 +1,69 @@
-import React, {useState} from 'react'
-import { db, auth, storage } from '../firebase'
-import firebase from 'firebase/app'
+import React, {useState, useEffect} from 'react'
+import { db } from '../firebase'
 import '../App.css'
+import Header from './Header';
 import NavBar from './NavBar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImages } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom"
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { Link } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
+import CreatedPosts from './CreatedPosts';
+import Post from './Post'
 
 
-// function Mypage({ postId, postName, price, imageUrl}) {
-//   const [linkForMercari, setLinkForMercari] = useState('');
-//   const [nickname, setNickname] = useState('');
-//   const [profileDesc, setProfileDesc] = useState('');
-//   const profile = db.collection('users')
-//     .where('userID', '==', user.uid)
-//     .get()
-//     .then(snapshot =>(console.log(snapshot.date())))
-//   console.log(profile.size)
-//   console.log(profile.empty)
-  // profile.forEach((postDoc) => {
-  //   console.log(postDoc.id, ' => ', JSON.stringify(postDoc.data()))
-  // })
+function Mypage() {
+  const { currentUser } = useAuth();
+  const uid = currentUser.uid;
+  console.log(uid)
+  const userRef = db.collection('users').doc(uid);
+  const createdPostsRef = userRef.collection('createdPosts');
+  const [linkForMercari, setLinkForMercari] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [profileDesc, setProfileDesc] = useState('');
+  const postIds = [];
 
-// const historyPost = db.collection('posts')
-//     .where('authorID', '==', 'user.uid')
-//     .get()
-//   console.log(historyPost.size)
-//   console.log(historyPost.empty)
-  // historyPost.forEach((postDoc) => {
-  //   console.log(postDoc.id, ' => ', JSON.stringify(postDoc.data()))
-  // })
-//   return (
-//     <Link target="_blank" to={`posts/${postId}`} className="">
-//       <li 
-//       key={postId} 
-//       className="list-styles col-md-2 w-100"
-//       style={{maxWidth: "300px"}}
-//       >
-//         <figure>
-//           <div className="thumbnail">
-//             <img width="200px" src={imageUrl} alt="アップロード写真"/>
-//             <span className="price-tag">¥{price}</span>
-//           </div>
-//           <figcaption>{postName}</figcaption>
-//         </figure>
-//       </li>
-//     </Link>
-//   )
-// }
+  useEffect(() => {
+    userRef
+    .get()
+    .then((snapshot) => {
+      const userData = snapshot.data();
+      setLinkForMercari(userData.linkForMercari);
+      setNickname(userData.nickname);
+      setProfileDesc(userData.profileDesc);
+      console.log(snapshot.data());
+    })
+  }, [])
 
-// export default Mypage
+  const list = createdPostsRef.get().then((querysnapshot) => {
+    querysnapshot.docs.forEach(doc => {
+      console.log(doc.data())
+      const post = doc.data()
+      return([
+        <Post 
+          key={post.postId}
+          imageUrl={post.imageUrl}
+          postId={post.postId}
+          postName={post.postName}
+          price={post.price}
+        />
+      ]);
+    })
+  })
+  
+  return (
+    <>
+    <Header title={"My Page"}/>
+      <div className="d-flex container">
+        <div className="row">
+          <li>{nickname}</li>
+          <li>{linkForMercari}</li>
+          <li>{profileDesc}</li>
+        </div>
+      </div>
+    {/* <CreatedPosts postIds={postIds}/> */}
+    {list}
+    <NavBar />
+    </>
+  )
+}
+
+export default Mypage

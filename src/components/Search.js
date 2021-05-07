@@ -11,25 +11,8 @@ function Search() {
   const [keyword, setKeyword] = useState('');
 
   console.log(keyword)
-  // useEffect(() => {
-  //   const readData = db.collection('posts')
-  //   .where("postName", "==", keyword)
-  //   .get().then((snapshot) => {
-  //     const postArray = snapshot.docs.map(doc => {
-  //       return {
-  //         postName: doc.postName,
-  //         ...doc.data()
-  //       }
-  //     });
-  //     setPosts(postArray);
-  //   })
-  //   return () => {
-  //     readData();
-  //   }
-  // }, [])
 
   const fetchData = () => {
-
     db.collection("posts").where("postName", "==", keyword).get().then((snapshot) => {
       const postArray = snapshot.docs.map(doc => {
         return {
