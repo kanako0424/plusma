@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
           await userDoc.ref.set({
             nickname: '名無しさん',
             userId: userId,
-            profileDesc: '',
+            profileDesc: '初めまして',
             linkForMercari: '',
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           });

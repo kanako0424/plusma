@@ -32,6 +32,7 @@ function App() {
             <Route path="/create-post" component={CreatePost} />
             <Route path="/search" component={Search} />
             {/* <Route path="/my-page" component={Mypage} /> */}
+            <Route path="/users/:id" component={Mypage} />
             <Route path="/posts/:id" component={PostDetails} />
           </Switch>
         </AuthProvider>

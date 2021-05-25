@@ -2,67 +2,78 @@ import React, { useState, useEffect } from 'react'
 import { db } from "../firebase"
 import PostDetailsPost from './PostDetailsPost';
 import Header from './Header';
+import NavBar from './NavBar'
+import { useAuth } from "../contexts/AuthContext"
+import CreatePost from "./CreatePost"
 
-
-//firebaseからデータを取得&ユーザーのニックネームを表示&ユーザーが作成者だったら編集と削除ができるようにする
-function PostDetails({ match }) {
-  const [posts, setPosts] = useState([]);
-  const [authorName, setAuthorName] = useState();
-
-  const postId = match.params.id;
+function PostDetails() {
+  const [post, setPost] = useState([]);
+  const { currentUser } = useAuth();
+  const postId = window.location.href.slice(-20);
   
   useEffect(() => {
-    db.collection('posts').where("postId", "==", postId).get().then((snapshot) => {
-      const postArray = snapshot.docs.map(doc => {
-        return [{
-          postName: doc.postName,
-          ...doc.data()
-        }]
-      });
-  
-      setPosts(postArray);
-      console.log(posts);
+    db.collection('posts').doc(postId).get().then((doc) => {
+      if (doc.exists) {
+        setPost(doc.data())
+      } else {
+        console.log('no such document!')
+      }
+    }).catch(err => {
+      console.log("error: ", err);
     });
   }, []);
 
-  const postListItems = posts.map(post => {
+  console.log(post)
 
-    const authorId = post[0].authorId;
-    db.collection("users").doc(authorId).get()
-      .then((snapshot) => {
-        const author = snapshot.data().nickname;
-        setAuthorName(author)
-      });
-      console.log(authorName);
-
+  if (currentUser !== post.authorId) {
     return(
+      <>
+      <Header title={"商品詳細"}/>
       <PostDetailsPost 
-        key={post[0].postId}
-        postName={post[0].postName}
-        nickname={authorName}
-        imageUrl={post[0].imageUrl}
-        publishedDate={post[0].publishedDate}
-        price={post[0].price}
-        type={post[0].type}
-        category={post[0].category}
-        link={post[0].link}
-        rating={post[0].rating}
-        scoreOfPracticeExam={post[0].scoreOfPracticeExam}
-        universityName={post[0].universityName}
-        description={post[0].description}
-        postId={post[0].postId}
+        key={post.postId}
+        postId={post.postId}
+        authorId={post.authorId}
+        postName={post.postName}
+        imageUrl={post.imageUrl}
+        publishedDate={post.publishedDate}
+        price={post.price}
+        type={post.type}
+        category={post.category}
+        link={post.link}
+        rating={post.rating}
+        scoreOfPracticeExam={post.scoreOfPracticeExam}
+        universityName={post.universityName}
+        description={post.description}
       />
+      <NavBar />
+      </>
     )
-  })
 
-  
-  
-  return(
-    <>
-    <Header title={"商品詳細"}/>
-    {postListItems}
-    </>
-  )
+  } else {
+    return (
+      <>
+        <Header title={"商品詳細"}/>
+        <CreatePost 
+          key={post.postId}
+          postId={post.postId}
+          authorId={post.authorId}
+          postName={post.postName}
+          imageUrl={post.imageUrl}
+          publishedDate={post.publishedDate}
+          price={post.price}
+          type={post.type}
+          category={post.category}
+          link={post.link}
+          rating={post.rating}
+          scoreOfPracticeExam={post.scoreOfPracticeExam}
+          universityName={post.universityName}
+          description={post.description}
+        />
+        <NavBar />
+      </>
+    )
+  }
+
 }
 
 export default PostDetails

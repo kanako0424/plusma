@@ -1,76 +1,116 @@
 import React from 'react'
-import NavBar from './NavBar'
+import UserInfo from './UserInfo';
 
 function PostDetailsPost({ 
-  imageUrl, 
-  postName, 
-  nickname, 
-  publishedDate, 
-  price, 
-  type, 
-  category, 
-  link, 
-  rating, 
-  scoreOfPracticeExam, 
-  universityName, 
-  description, 
+  imageUrl,
+  postName,
+  authorId,
+  authorName,
+  publishedDate,
+  price,
+  type,
+  category,
+  link,
+  rating,
+  scoreOfPracticeExam,
+  universityName,
+  description,
   deleteButton
 }) {
   
   return(
-    <div className="post-details">
-      <img src={imageUrl} alt="商品サムネイル"/>
-      <h6><strong>{postName}</strong></h6>
-      <table>
-        <tbody className="container">
-          <tr className="row">
-            <td className="col-5">作成者</td>
-            <td className="col-7">{nickname}</td>
-          </tr>
-          <tr className="row">
-            <td className="col-5">出版年</td>
-            <td className="col-7">{publishedDate}</td>
-          </tr>
-          <tr className="row">
-            <td className="col-5">価格</td>
-            <td className="col-7">{price} 円</td>
-          </tr>
-          <tr className="row">
-            <td className="col-5">種類</td>
-            <td className="col-7">{type}</td>
-          </tr>
-          <tr className="row">
-            <td className="col-5">カテゴリ</td>
-            <td className="col-7">{category}</td>
-          </tr>
-          <tr className="row">
-            <td className="col-5">商品リンク</td>
-            <td className="col-7"><a target="_blank" rel="noreferrer" href={link}>{link}</a></td>
-          </tr>
-        </tbody>
-      </table>
-      <p>■参考資料</p>
-      <table>
-        <tbody className="container">
-          <tr className="row">
-            <td className="col-5">評定</td>
-            <td className="col-7">{rating} / 5</td>
-          </tr>
-          <tr className="row">
-            <td className="col-5">模試の点数</td>
-            <td className="col-7">{scoreOfPracticeExam}</td>
-          </tr>
-          <tr className="row">
-            <td className="col-5">合格大学</td>
-            <td className="col-7">{universityName}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>■推しポイント!</p>
-      <img src={imageUrl} width="33%" alt="商品の画像"/>
-      <p>{description}</p>
+    <div className="container justify-content-center post-details">
+      <div className="row mb-2">
+        <img src={imageUrl} alt="商品サムネイル"/>
+      </div>
+      <div className="row mb-4">
+        <input 
+          type="text" 
+          id="postName" 
+          className="col-12"
+          value={postName}
+          readOnly
+        />
+        </div>
+        <div className="row mb-2">
+          <label htmlFor="publishedDate" className="col-4">
+            作成者
+          </label>
+          <UserInfo authorId={authorId}/>
+        </div>
+        <div className="row mb-2">
+          <label htmlFor="publishedDate" className="col-4">
+            出版年
+          </label>
+          <input 
+            className="col-8" 
+            id="publishedDate" 
+            type="month" 
+            value={publishedDate}
+            readOnly
+          />
+        </div>
+        <div className="row mb-2">
+          <label htmlFor="price" className="col-4">
+            価格
+          </label>
+          <input 
+            type="number" 
+            id="price" 
+            className="col-8" 
+            value={price}
+            readOnly
+          />
+        </div>
+        <div className="row d-flex align-content-center mb-2">
+          <span className="col-4">種類</span>
+          <span className="col-8">
+            <input 
+              id="type" 
+              type="text" 
+              value={type}
+              readOnly
+            />
+          </span>
+          
+        </div>
+        <div className="row mb-2">
+          <label htmlFor="category" className="col-4">
+            カテゴリー
+          </label>
+          <input type="text" id="category" className="col-8" value={category} readOnly/>
+        </div>
+        <div className="row mb-2">
+          <label htmlFor="link" className="col-4">
+            商品リンク
+          </label>
+          <input type="text" id="link" className="col-8" value={link} readOnly/>
+        </div>
+        <p>■参考資料</p>
+        <div className="row mb-2">
+          <label htmlFor="rating" className="col-4">
+            評定
+          </label>
+          <input type="number" id="rating" className="col-8" value={rating} readOnly/>
+        </div>
+        <div className="row mb-2">
+          <label htmlFor="score" className="col-4">
+            模試の点数
+          </label>
+          <input htmlFor="score" type="number" className="col-8" value={scoreOfPracticeExam} readOnly/>
+        </div>
+        <div className="row mb-2">
+          <label htmlFor="university" className="col-4">
+            合格大学
+          </label>
+          <input type="text" id="university" className="col-8" value={universityName} readOnly/>
+        </div>
+        <div className="row mb-2">
+          <p className="col-12">■推しポイント!</p>
+          <textarea value={description} className="col-12" readOnly></textarea>
+          <img src={imageUrl} alt="商品の画像" />
+        </div>
       <p>{deleteButton}</p>
-      <NavBar />
     </div>
   )
 }

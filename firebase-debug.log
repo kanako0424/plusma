@@ -1,49 +1,128 @@
-[debug] [2021-05-07T08:57:34.743Z] ----------------------------------------------------------------------
-[debug] [2021-05-07T08:57:34.746Z] Command:       /Users/hamadakanako/.nodebrew/node/v14.16.0/bin/node /Users/hamadakanako/.nodebrew/current/bin/firebase deploy
-[debug] [2021-05-07T08:57:34.746Z] CLI Version:   9.10.2
-[debug] [2021-05-07T08:57:34.746Z] Platform:      darwin
-[debug] [2021-05-07T08:57:34.746Z] Node Version:  v14.16.0
-[debug] [2021-05-07T08:57:34.748Z] Time:          Fri May 07 2021 17:57:34 GMT+0900 (日本標準時)
-[debug] [2021-05-07T08:57:34.748Z] ----------------------------------------------------------------------
+[debug] [2021-05-24T07:02:34.526Z] ----------------------------------------------------------------------
+[debug] [2021-05-24T07:02:34.528Z] Command:       /Users/hamadakanako/.nodebrew/node/v14.16.0/bin/node /Users/hamadakanako/.nodebrew/current/bin/firebase apps:list
+[debug] [2021-05-24T07:02:34.528Z] CLI Version:   9.10.2
+[debug] [2021-05-24T07:02:34.528Z] Platform:      darwin
+[debug] [2021-05-24T07:02:34.528Z] Node Version:  v14.16.0
+[debug] [2021-05-24T07:02:34.530Z] Time:          Mon May 24 2021 16:02:34 GMT+0900 (日本標準時)
+[debug] [2021-05-24T07:02:34.530Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2021-05-07T08:57:34.763Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2021-05-07T08:57:34.763Z] > authorizing via signed-in user (budoukan0424@gmail.com)
-[debug] [2021-05-07T08:57:34.763Z] [iam] checking project real-plusma for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
-[debug] [2021-05-07T08:57:34.766Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2021-05-07T08:57:34.766Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2021-05-07T08:57:34.971Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Fri, 07 May 2021 08:57:34 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2021-05-07T08:57:35.017Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/real-plusma:testIamPermissions  
- {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
-[debug] [2021-05-07T08:57:35.886Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 07 May 2021 08:57:35 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=749","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2021-05-07T08:57:35.887Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project real-plusma:
-
-  datastore.indexes.create
-  datastore.indexes.delete
-  datastore.indexes.list
-  datastore.indexes.update
-  firebase.projects.get
-  firebasehosting.sites.update
-  firebaserules.releases.create
-  firebaserules.releases.update
-  firebaserules.rulesets.create
-[debug] [2021-05-07T08:57:35.889Z] > refreshing access token with scopes: []
-[debug] [2021-05-07T08:57:35.889Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- <request body omitted>
-[debug] [2021-05-07T08:57:36.055Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Fri, 07 May 2021 08:57:36 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
-[debug] [2021-05-07T08:57:36.091Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/real-plusma [none]
-[debug] [2021-05-07T08:57:36.737Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/real-plusma 403
-[debug] [2021-05-07T08:57:36.737Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/real-plusma {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
-[debug] [2021-05-07T08:57:36.738Z] HTTP Error: 403, The caller does not have permission
-[debug] [2021-05-07T08:57:36.856Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+[debug] [2021-05-24T07:02:34.536Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-24T07:02:34.537Z] > authorizing via signed-in user (budoukan0424@gmail.com)
+[debug] [2021-05-24T07:02:34.543Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/real-plusma:searchApps?pageSize=100  
+ 
+[debug] [2021-05-24T07:02:35.233Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 24 May 2021 07:02:35 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-05-24T07:02:35.234Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-05-24T07:02:35.237Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-05-24T07:02:35.338Z] FirebaseError: HTTP Error: 403, The caller does not have permission
     at module.exports (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
-    at Client.doRequest (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/apiv2.js:238:23)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async Client.request (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/apiv2.js:96:20)
-    at async Object.getFirebaseProject (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/management/projects.js:290:21)
-    at async Object.getDefaultHostingSite (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/getDefaultHostingSite.js:8:21)
-    at async requireHostingSite (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/requireHostingSite.js:9:18)
-    at async Object.fn (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/commands/deploy.js:66:9)
-    at async /Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/command.js:169:17
+    at Request._callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at Request.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at IncomingMessage.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:467:12)
+    at endReadableNT (internal/streams/readable.js:1327:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
 [error] 
-[error] Error: Failed to get Firebase project real-plusma. Please make sure the project exists and your account has permission to access it.
+[error] Error: Failed to list Firebase apps. See firebase-debug.log for more info.
+[debug] [2021-05-24T07:18:52.377Z] ----------------------------------------------------------------------
+[debug] [2021-05-24T07:18:52.381Z] Command:       /Users/hamadakanako/.nodebrew/node/v14.16.0/bin/node /Users/hamadakanako/.nodebrew/current/bin/firebase apps:list
+[debug] [2021-05-24T07:18:52.382Z] CLI Version:   9.10.2
+[debug] [2021-05-24T07:18:52.382Z] Platform:      darwin
+[debug] [2021-05-24T07:18:52.382Z] Node Version:  v14.16.0
+[debug] [2021-05-24T07:18:52.385Z] Time:          Mon May 24 2021 16:18:52 GMT+0900 (日本標準時)
+[debug] [2021-05-24T07:18:52.386Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-24T07:18:52.402Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-24T07:18:52.402Z] > authorizing via signed-in user (budoukan0424@gmail.com)
+[debug] [2021-05-24T07:18:52.410Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/real-plusma:searchApps?pageSize=100  
+ 
+[debug] [2021-05-24T07:18:53.045Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 24 May 2021 07:18:55 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-05-24T07:18:53.046Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-05-24T07:18:53.048Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-05-24T07:18:53.180Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at Request.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at IncomingMessage.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:467:12)
+    at endReadableNT (internal/streams/readable.js:1327:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+[error] 
+[error] Error: Failed to list Firebase apps. See firebase-debug.log for more info.
+[debug] [2021-05-24T07:27:59.825Z] ----------------------------------------------------------------------
+[debug] [2021-05-24T07:27:59.831Z] Command:       /Users/hamadakanako/.nodebrew/node/v14.16.0/bin/node /Users/hamadakanako/.nodebrew/current/bin/firebase apps:list
+[debug] [2021-05-24T07:27:59.832Z] CLI Version:   9.10.2
+[debug] [2021-05-24T07:27:59.832Z] Platform:      darwin
+[debug] [2021-05-24T07:27:59.832Z] Node Version:  v14.16.0
+[debug] [2021-05-24T07:27:59.844Z] Time:          Mon May 24 2021 16:27:59 GMT+0900 (日本標準時)
+[debug] [2021-05-24T07:27:59.845Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-24T07:27:59.863Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-24T07:27:59.863Z] > authorizing via signed-in user (budoukan0424@gmail.com)
+[debug] [2021-05-24T07:27:59.892Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/real-plusma:searchApps?pageSize=100  
+ 
+[debug] [2021-05-24T07:28:01.082Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 24 May 2021 07:28:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-05-24T07:28:01.082Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-05-24T07:28:01.087Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-05-24T07:28:01.209Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at Request.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at IncomingMessage.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:467:12)
+    at endReadableNT (internal/streams/readable.js:1327:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+[error] 
+[error] Error: Failed to list Firebase apps. See firebase-debug.log for more info.
+[debug] [2021-05-24T07:41:28.231Z] ----------------------------------------------------------------------
+[debug] [2021-05-24T07:41:28.233Z] Command:       /Users/hamadakanako/.nodebrew/node/v14.16.0/bin/node /Users/hamadakanako/.nodebrew/current/bin/firebase apps:list
+[debug] [2021-05-24T07:41:28.234Z] CLI Version:   9.10.2
+[debug] [2021-05-24T07:41:28.234Z] Platform:      darwin
+[debug] [2021-05-24T07:41:28.234Z] Node Version:  v14.16.0
+[debug] [2021-05-24T07:41:28.236Z] Time:          Mon May 24 2021 16:41:28 GMT+0900 (日本標準時)
+[debug] [2021-05-24T07:41:28.236Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-24T07:41:28.250Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-24T07:41:28.251Z] > authorizing via signed-in user (budoukan0424@gmail.com)
+[debug] [2021-05-24T07:41:28.259Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/real-plusma:searchApps?pageSize=100  
+ 
+[debug] [2021-05-24T07:41:29.025Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Mon, 24 May 2021 07:41:29 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-05-24T07:41:29.025Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-05-24T07:41:29.028Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-05-24T07:41:29.266Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at Request.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:315:20)
+    at Request.EventEmitter.emit (domain.js:467:12)
+    at IncomingMessage.<anonymous> (/Users/hamadakanako/.nodebrew/node/v14.16.0/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:421:28)
+    at IncomingMessage.emit (events.js:327:22)
+    at IncomingMessage.EventEmitter.emit (domain.js:467:12)
+    at endReadableNT (internal/streams/readable.js:1327:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+[error] 
+[error] Error: Failed to list Firebase apps. See firebase-debug.log for more info.

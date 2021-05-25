@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
@@ -28,31 +28,31 @@ export default function Login() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-1">ログイン</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>メールアドレス</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>パスワード</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              ログイン
-            </Button>
-          </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/forgot-password">パスワードを忘れた方はこちら</Link>
+      <div className="container justify-content-center">
+        <h2 className="text-center mb-1 col-12">ログイン</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <label htmlFor="email" className="col-4">メールアドレス</label>
+            <input id="email" className="col-8" type="email" ref={emailRef} required />
           </div>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        アカウントの作成 <Link to="/signup">サインアップ</Link>
+          <div className="row">
+            <label htmlFor="password" className="col-4">パスワード</label>
+            <input id="password" className="col-8" type="password" ref={passwordRef} required />
+          </div>
+          <div className="row">
+            <button disabled={loading} className="submit col-4" type="submit">
+              ログイン
+            </button>
+          </div>
+        </form>
+        <div className="w-100 text-center mt-3">
+          <Link to="/forgot-password">パスワードを忘れた方はこちら</Link>
+        </div>
       </div>
+    <div className="w-100 text-center mt-2">
+      アカウントの作成 <Link to="/signup">サインアップ</Link>
+    </div>
     </>
   )
 }

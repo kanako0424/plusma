@@ -15,6 +15,35 @@ figure {
   margin: 15px auto;
 }
 
+input, textarea, button {
+  margin: 15px;
+  border: none;
+  border-radius: 15px;
+  background-color: #F3EFE4;
+  color: #282c34;
+  font-weight: 600;
+}
+
+input, textarea {
+  box-shadow: 5px 5px 5px #e2ded4;
+}
+
+button.submit {
+  background-color: #F9BA32;
+  border-radius: 15px;
+  margin: 15px;
+}
+
+input[type="checkbox"]{
+  box-shadow: none;
+}
+
+[id="postName"] {
+  font-weight: 700;
+  font-size: large;
+  color: #282c34;
+}
+
 p {
   margin-top: 15px !important;
   margin-bottom: 0 !important;
@@ -112,10 +141,10 @@ p {
 
 .post-details img {
   width: 100%;
-  justify-content: center;
-  margin: 10px auto;
+  margin: 10px 0px;
+  padding: 10px;
 }
 
-.post-details table {
-  width: 100%;
+.post-details input, .post-details textarea {
+  box-shadow: none;
 }
