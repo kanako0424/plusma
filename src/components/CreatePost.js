@@ -6,10 +6,10 @@ import NavBar from './NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 import Header from './Header';
+import { useAuth } from "../contexts/AuthContext"
 
 function CreatePost() {
-  
-  var user = auth.currentUser;
+  const { currentUser } = useAuth();
   const postsRef = db.collection('posts')
 
   const [postName, setPostName] = useState('');
@@ -28,7 +28,7 @@ function CreatePost() {
 
   const addCreatedPost = (docId) => {
     const postId = docId;
-    const authorId = user.uid;
+    const authorId = currentUser.uid;
     const userRef = db.collection('users').doc(authorId);
     userRef.collection('createdPosts').doc(postId).set({
       postId: postId,
@@ -39,7 +39,6 @@ function CreatePost() {
       console.log(err)
     })
   }
-
 
   const onImageChange = async event => {
     let image = event.target;
@@ -55,21 +54,6 @@ function CreatePost() {
   const addPost = (event) => {
     event.preventDefault();
 
-    let type = '';
-    if (memo) {
-      if (answer) {
-        type = "メモと解答"
-      } else if (!answer) {
-        type = "メモ"
-      }
-    } else if (!memo) { 
-      if (answer) {
-        type = "解答"
-      } else if (!answer) {
-        type = null
-      }
-    } 
-    
     const postRef = postsRef.doc();
     const postId = postRef.id;
     
@@ -77,14 +61,15 @@ function CreatePost() {
       postId: postId,
       postName: postName,
       imageUrl: imageUrl,
-      authorId: user.uid,
+      authorId: currentUser.uid,
       description: description,
       price: price,
       link: link,
       publishedDate: publishedDate,
       rating: rating,
       scoreOfPracticeExam: scoreOfPracticeExam,
-      type: type,
+      memo: memo,
+      answer: answer,
       category: category,
       universityName: universityName,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -95,6 +80,8 @@ function CreatePost() {
     })
 
 
+    setImageUrl(null);
+    setPreview(null);
     setPostName('');
     setDescription('');
     setPrice('');
@@ -147,13 +134,13 @@ function CreatePost() {
         <div className="row d-flex align-content-center mb-2">
           <span className="col-4">種類</span>
           <span className="col-1">
-            <input id="memo" type="checkbox" value={memo} onChange={event => setMemo(!memo)} />
+            <input id="memo" type="checkbox" value={memo} onChange={event => setMemo(memo)} />
           </span>
           <label htmlFor="memo" className="col-3">
             メモ
           </label>
           <span className="col-1">
-            <input id="answer" type="checkbox"  value={answer} onChange={event => setAnswer(!answer)} />
+            <input id="answer" type="checkbox"  value={answer} onChange={event => setAnswer(answer)} />
           </span>
           <label htmlFor="answer" className="col-3">
             解答
@@ -201,7 +188,9 @@ function CreatePost() {
             style={{ maxWidth: "400px" }}
             disabled={!postName}
             onClick={addPost}
-            >投稿する</button>
+          >
+            投稿する
+          </button>
         </div>
       </div>
       <NavBar />

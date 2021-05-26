@@ -13,7 +13,6 @@ function Post({ postId, postName, nickname, price, imageUrl }) {
           pathname: `posts/${postId}`,
           state: {nickname: nickname}
         }}
-        className=""
       >
         <div className="thumbnail">
           <img src={imageUrl} alt="アップロード写真"/>

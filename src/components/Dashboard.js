@@ -10,8 +10,7 @@ export default function Dashboard() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const readData = db.collection('posts')
-      .orderBy('createdAt', 'desc')
-      .onSnapshot((snapshot) => {
+      .orderBy('createdAt', 'desc').get().then((snapshot) => {
         const postArray = snapshot.docs.map(doc => {
           return {
             postName: doc.postName,
@@ -20,6 +19,7 @@ export default function Dashboard() {
         });
         setPosts(postArray);
       })
+      .catch(err => {console.log(err)})
       return () => {
         readData();
       }

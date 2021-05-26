@@ -3,12 +3,9 @@ import { db } from "../firebase"
 import PostDetailsPost from './PostDetailsPost';
 import Header from './Header';
 import NavBar from './NavBar'
-import { useAuth } from "../contexts/AuthContext"
-import CreatePost from "./CreatePost"
 
 function PostDetails() {
   const [post, setPost] = useState([]);
-  const { currentUser } = useAuth();
   const postId = window.location.href.slice(-20);
   
   useEffect(() => {
@@ -25,7 +22,6 @@ function PostDetails() {
 
   console.log(post)
 
-  if (currentUser !== post.authorId) {
     return(
       <>
       <Header title={"商品詳細"}/>
@@ -37,7 +33,8 @@ function PostDetails() {
         imageUrl={post.imageUrl}
         publishedDate={post.publishedDate}
         price={post.price}
-        type={post.type}
+        memo={post.memo}
+        answer={post.answer}
         category={post.category}
         link={post.link}
         rating={post.rating}
@@ -48,31 +45,6 @@ function PostDetails() {
       <NavBar />
       </>
     )
-
-  } else {
-    return (
-      <>
-        <Header title={"商品詳細"}/>
-        <CreatePost 
-          key={post.postId}
-          postId={post.postId}
-          authorId={post.authorId}
-          postName={post.postName}
-          imageUrl={post.imageUrl}
-          publishedDate={post.publishedDate}
-          price={post.price}
-          type={post.type}
-          category={post.category}
-          link={post.link}
-          rating={post.rating}
-          scoreOfPracticeExam={post.scoreOfPracticeExam}
-          universityName={post.universityName}
-          description={post.description}
-        />
-        <NavBar />
-      </>
-    )
-  }
 
 }
 
