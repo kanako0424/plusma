@@ -42,7 +42,7 @@ function Header({title}) {
           <Link to="/update-profile" className="col-12">
             アカウント設定の変更
           </Link>
-          <button className=" submit col-12" variant="link" onClick={handleLogout}>
+          <button className="submit" variant="link" onClick={handleLogout}>
             ログアウト
           </button>
           <a className="col-12" target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfi_VBq8nOqhkknxDfTCn3gUdzRD32rJtexpW9wjSzaIKQ3Pw/viewform?usp=sf_link">お問い合わせ</a>

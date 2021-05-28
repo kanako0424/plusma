@@ -10,7 +10,8 @@ export default function Dashboard() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const readData = db.collection('posts')
-      .orderBy('createdAt', 'desc').get().then((snapshot) => {
+      .where('isDeleted', '==', false)
+      .get().then((snapshot) => {
         const postArray = snapshot.docs.map(doc => {
           return {
             postName: doc.postName,

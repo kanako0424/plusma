@@ -5,6 +5,18 @@ body {
   padding-top: 60px;
 }
 
+tr {
+  height: 2rem;
+}
+
+th {
+  width: 30%;
+}
+
+[for="answer"], [for="memo"] {
+  padding: 0px 10px 0px 10px;
+}
+
 figure {
   margin: 0px !important;
 }
@@ -28,7 +40,9 @@ input, textarea {
   box-shadow: 5px 5px 5px #e2ded4;
 }
 
-button.submit {
+.submit {
+  color: #282c34;
+  text-align: center;
   background-color: #F9BA32;
   border-radius: 15px;
   margin: 15px;
@@ -135,14 +149,12 @@ p {
 .post-details {
   width: 85%;
   box-sizing: border-box;
-  padding: 60px 0px;
+  padding: 60px 0px 15px;
   margin: auto;
 }
 
 .post-details img {
   width: 100%;
-  margin: 10px 0px;
-  padding: 10px;
 }
 
 .post-details input, .post-details textarea {

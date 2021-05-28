@@ -15,7 +15,7 @@ function GetProfile({ userId }) {
       setNickname(userData.nickname);
       setProfileDesc(userData.profileDesc);
     })
-  }, [])
+  }, [userId])
 
   const updateNickname = () => {
     //デプロイできるかどうか試す。できなかったらもう一度コンソールを作る。もう知らん。。

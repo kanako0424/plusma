@@ -17,9 +17,9 @@ function UserInfo({authorId}) {
     console.log(authorName);
 
     return unsubscribe
-  }, [])
+  }, [authorId, authorName])
 
-  if (authorId) {
+  if (authorId)  {
     return (
       <Link 
         to={{
@@ -32,7 +32,6 @@ function UserInfo({authorId}) {
     )
   } else {
     return (<p>投稿者はわかりません</p>)
-    
   }
 }
 
