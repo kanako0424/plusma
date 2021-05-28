@@ -28,19 +28,21 @@ function PostDetails() {
   const deletePost = () => {
     //削除ボタンが押された時の挙動を記入する
     if (window.confirm("本当に削除しますか？")) {
+
       db.collection('posts').doc(postId).set({isDeleted: true}, {merge: true})
       .then(
         console.log('deleted!')
         )
-        .catch(err => {console.log(err)});
-        db.collection('users').doc(post.authorId).collection('createdPsots').doc(postId).set({isDeleted: true}, {merge: true})
-        .then(
-          console.log('deleted from createdposts, too.'),
-          alert('投稿は正常に削除されました')
-        )
-        .catch(err => {
-          console.log(err,'投稿は削除できませんでした')
-        });
+      .catch(err => {console.log(err)});
+
+      db.collection('users').doc(post.authorId).collection('createdPosts').doc(postId).set({isDeleted: true}, {merge: true})
+      .then(
+        console.log('deleted from createdposts, too.'),
+        alert('投稿は正常に削除されました')
+      )
+      .catch(err => {
+        alert(err,'投稿は削除できませんでした')
+      });
       } else {
         return;
       }

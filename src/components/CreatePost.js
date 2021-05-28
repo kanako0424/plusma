@@ -56,7 +56,7 @@ function CreatePost() {
     userRef.collection('createdPosts').doc(postId).set({
       postId: postId,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    }).then(() => {
+    }, {merge: true}).then(() => {
       console.log('createdPost is created')
     }).catch((err) => {
       console.log(err)
