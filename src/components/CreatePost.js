@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react'
+import { useHistory } from "react-router-dom"
 import { db, storage } from '../firebase'
 import firebase from 'firebase/app'
 import '../App.css'
@@ -9,6 +10,15 @@ import Header from './Header';
 import { useAuth } from "../contexts/AuthContext"
 
 function CreatePost() {
+  const history = useHistory();
+  let postId = window.location.pathname.split('/create-post')[1];
+  if (postId !== "") {
+    postId = postId.split('/')[1];
+  }
+
+  const { currentUser } = useAuth();
+  const authorId = currentUser.uid;
+
   const [preview, setPreview] = useState([]),
         [imageUrl, setImageUrl] = useState(''),
         [postName, setPostName] = useState(''),
@@ -22,34 +32,18 @@ function CreatePost() {
         [scoreOfPracticeExam, setscoreOfPracticeExam] = useState(''),
         [universityName, setUniversityName] = useState(''),
         [description, setDescription] = useState('');
-  
-  const { currentUser } = useAuth();
-  const authorId = currentUser.uid;
 
-  let postId = window.location.pathname.split("/create-post")[1];
-  if (postId !== "") {
-    postId = postId.split("/")[1];
-  }
-  
-  useEffect(() => {
-    if (postId !== "") {
-      db.collection("posts").doc(postId).get().then(snapshot => {
-        const post = snapshot.data();
-        setPostName(post.name);
-        setDescription(post.description);
-        setPublishedDate(post.publishedDate);
-        setPrice(post.price);
-        setMemo(post.memo);
-        setAnswer(post.answer);
-        setCategory(post.category);
-        setLink(post.link);
-        setRating(post.rating);
-        setscoreOfPracticeExam(post.scoreOfPracticeExam);
-        setUniversityName(post.universityName);
-        setImageUrl(post.imageUrl);
-      })
-    }
-  }, [postId])
+  const inputPostName = useCallback(event => {setPostName(event.target.value)}, [setPostName]);
+  const inputPublishedDate = useCallback(event => {setPublishedDate(event.target.value)}, [setPublishedDate]);
+  const inputPrice = useCallback(event => {setPrice(event.target.value)}, [setPrice]);
+  const inputMemo = useCallback((event) => {setMemo(event.target.checked)}, [setMemo]);
+  const inputAnswer = useCallback((event) => {setAnswer(event.target.checked)}, [setAnswer]);
+  const inputCategory = useCallback(event => {setCategory(event.target.value)}, [setCategory]);
+  const inputLink = useCallback(event => {setLink(event.target.value)}, [setLink]);
+  const inputRating = useCallback(event => {setRating(event.target.value)}, [setRating]);
+  const inputScoreOfPracticeExam = useCallback(event => {scoreOfPracticeExam(event.target.value)}, [setscoreOfPracticeExam]);
+  const inputUniversityName = useCallback(event => {setUniversityName(event.target.value)}, [setUniversityName]);
+  const inputDescripion = useCallback((event) => {setDescription(event.target.value)}, [setDescription]);
 
   const addCreatedPost = (postId) => {
     const userRef = db.collection('users').doc(authorId);
@@ -58,6 +52,8 @@ function CreatePost() {
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }, {merge: true}).then(() => {
       console.log('createdPost is created')
+      history.push('/')
+      alert("投稿が作成されました")
     }).catch((err) => {
       console.log(err)
     })
@@ -97,10 +93,13 @@ function CreatePost() {
     }
 
     if (postId === "") {
+      const postRef = db.collection('posts').doc();
       data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+      postId = postRef.id;
+      data.postId = postId;
     }
     
-    db.collection("psots").doc(postId).set(data, {merge: true}).then(
+    db.collection('posts').doc(postId).set(data, {merge: true}).then(
       console.log('post is created')
     ).catch((err) => {
       console.log(err)
@@ -117,30 +116,39 @@ function CreatePost() {
     setscoreOfPracticeExam('');
     setCategory('');
     setUniversityName('');
-    document.getElementById('answer').checked = false;
-    document.getElementById('memo').checked = false;
     setMemo(false);
     setAnswer(false);
     addCreatedPost(postId);
   }
 
-  const inputPostName = useCallback(event => setPostName(event.target.value), [setPostName]);
-  const inputPublishedDate = useCallback(event => setPublishedDate(event.target.value), [setPublishedDate]);
-  const inputPrice = useCallback(event => setPrice(event.target.value), [setPrice]);
-  const inputMemo = useCallback(setMemo(memo), [setMemo]);
-  const inputAnswer = useCallback(setAnswer(answer), [setAnswer]);
-  const inputCategory = useCallback(event => setCategory(event.target.value), [setCategory]);
-  const inputLink = useCallback(event => setLink(event.target.value), [setLink]);
-  const inputRating = useCallback(event => setRating(event.target.value), [setRating]);
-  const inputScoreOfPracticeExam = useCallback(event => scoreOfPracticeExam(event.target.value), [setscoreOfPracticeExam]);
-  const inputUniversityName = useCallback(event => setUniversityName(event.target.value), [setUniversityName]);
-  const inputDescripion = useCallback(event => setDescription(event.target.value), [setDescription]);
+
+  useEffect(() => {
+    if (postId !== "") {
+      db.collection('posts').doc(postId).get().then(snapshot => {
+        const post = snapshot.data()
+        console.log(post)
+        setPreview(post.imageUrl);
+        setPostName(post.postName);
+        setPublishedDate(post.publishedDate);
+        setPrice(post.price);
+        setMemo(post.memo);
+        setAnswer(post.answer);
+        setCategory(post.category);
+        setLink(post.link);
+        setRating(post.rating);
+        setscoreOfPracticeExam(post.scoreOfPracticeExam);
+        setUniversityName(post.universityName);
+        setDescription(post.description);
+        console.log(post.description, description)
+      })
+    }
+  }, [postId])
 
   return (
     <>
       <Header title={"投稿・編集"}/>
       <div className="container justify-content-center">
-        <img src={preview} alt="プレビュー画像"/>
+        <img id="preview" src={preview} alt="プレビュー画像"/>
         <div className="row mb-2">
           <label htmlFor="photo" className="col-4">
             <FontAwesomeIcon icon={faImages} size="lg" />
@@ -154,7 +162,7 @@ function CreatePost() {
             id="postName" 
             className="col-12"
             placeholder="商品名を入れてください"
-            value={postName} 
+            value={postName}
             onChange={inputPostName}
           />
         </div>
@@ -162,24 +170,46 @@ function CreatePost() {
           <label htmlFor="publishedDate" className="col-4">
             出版年
           </label>
-          <input className="col-8" id="publishedDate" type="month" value={publishedDate} onChange={inputPublishedDate} />
+          <input 
+            className="col-8"
+            id="publishedDate"
+            type="month"
+            value={publishedDate}
+            onChange={inputPublishedDate} 
+          />
         </div>
         <div className="row mb-2">
           <label htmlFor="price" className="col-4">
             価格
           </label>
-          <input type="number" id="price" className="col-8" value={price} onChange={inputPrice} />
+          <input 
+            type="number"
+            id="price"
+            className="col-8"
+            value={price}
+            onChange={inputPrice} 
+          />
         </div>
         <div className="row d-flex align-content-center mb-2">
           <span className="col-4">種類</span>
           <span className="col-1">
-            <input id="memo" type="checkbox" checked={memo} onChange={inputMemo} />
+            <input
+            id="memo" 
+            type="checkbox" 
+            checked={memo} 
+            onChange={inputMemo} 
+          />
           </span>
           <label htmlFor="memo" className="col-3">
             メモ
           </label>
           <span className="col-1">
-            <input id="answer" type="checkbox"  checked={answer} onChange={inputAnswer} />
+            <input 
+              id="answer" 
+              type="checkbox"  
+              checked={answer} 
+              onChange={inputAnswer} 
+            />
           </span>
           <label htmlFor="answer" className="col-3">
             解答
@@ -189,43 +219,78 @@ function CreatePost() {
           <label htmlFor="category" className="col-4">
             カテゴリー
           </label>
-          <input type="text" id="category" className="col-8" value={category} onChange={inputCategory} />
+          <input 
+            type="text" 
+            id="category" 
+            className="col-8" 
+            value={category}
+            onChange={inputCategory} 
+          />
         </div>
         <div className="row mb-2">
           <label htmlFor="link" className="col-4">
             商品リンク
           </label>
-          <input type="text" id="link" className="col-8" value={link} onChange={inputLink} />
+          <input 
+            type="text" 
+            id="link" 
+            className="col-8" 
+            value={link}
+            onChange={inputLink} 
+          />
         </div>
         <p>■参考資料</p>
         <div className="row mb-2">
           <label htmlFor="rating" className="col-4">
             評定
           </label>
-          <input type="number" id="rating" className="col-8" value={rating} onChange={inputRating} />
+          <input
+            type="number"
+            id="rating"
+            className="col-8" 
+            value={rating}
+            onChange={inputRating}
+          />
         </div>
         <div className="row mb-2">
-          <label htmlFor="score" className="col-4">
+          <label htmlFor="scoreOfPracticeExam" className="col-4">
             模試の点数
           </label>
-          <input htmlFor="score" type="number" className="col-8" value={scoreOfPracticeExam} onChange={inputScoreOfPracticeExam} />
+          <input
+            id="scoreOfPracticeExam"
+            type="number"
+            className="col-8"
+            value={scoreOfPracticeExam}
+            onChange={inputScoreOfPracticeExam} />
         </div>
         <div className="row mb-2">
-          <label htmlFor="university" className="col-4">
+          <label htmlFor="universityName" className="col-4">
             合格大学
           </label>
-          <input type="text" id="university" className="col-8" value={universityName} onChange={inputUniversityName} />
+          <input
+            type="text"
+            id="universityName"
+            className="col-8"
+            value={universityName}
+            onChange={inputUniversityName}
+          />
         </div>
         <div className="row mb-2">
         <p className="col-12">■推しポイント!</p>
-          <textarea value={description} className="col-12" onChange={inputDescripion}></textarea>
+          <textarea
+            id="description"
+            className="col-12"
+            rows="5"
+            placeholder="どんなところが役に立ちますか？"
+            onChange={inputDescripion}
+            value={description}
+          ></textarea>
         </div>
         <div className="row mb-2 justify-content-center">
           <button 
             type="submit" 
             className=" submit col-4"
             style={{ maxWidth: "400px" }}
-            disabled={!postName}
             onClick={addPost}
           >
             商品情報を保存する

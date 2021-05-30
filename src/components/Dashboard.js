@@ -9,7 +9,7 @@ import "react-bootstrap"
 export default function Dashboard() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    const readData = db.collection('posts')
+    db.collection('posts')
       .where('isDeleted', '==', false)
       .get().then((snapshot) => {
         const postArray = snapshot.docs.map(doc => {
@@ -21,9 +21,6 @@ export default function Dashboard() {
         setPosts(postArray);
       })
       .catch(err => {console.log(err)})
-      return () => {
-        readData();
-      }
   }, []);
   
   const postListItems = posts.map(post => {

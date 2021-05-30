@@ -4,22 +4,17 @@ import PostDetailsPost from './PostDetailsPost';
 import Header from './Header';
 import NavBar from './NavBar'
 import { useAuth } from "../contexts/AuthContext";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NotFound from './404'
 
 function PostDetails() {
   const { currentUser } = useAuth();
   const [post, setPost] = useState([]);
   const postId = window.location.href.slice(-20);
-  const history = useHistory();
   
   useEffect(() => {
     db.collection('posts').doc(postId).get().then((doc) => {
-      if (doc.exists) {
-        setPost(doc.data());
-      } else {
-        console.log('no such document!');
-      }
+      setPost(doc.data());
     }).catch(err => {
       console.log("error: ", err);
     });
