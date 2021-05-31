@@ -1,13 +1,12 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import { useHistory } from "react-router-dom"
-import { db, storage } from '../firebase'
+import { db } from '../firebase'
 import firebase from 'firebase/app'
 import '../App.css'
 import NavBar from './NavBar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImages } from '@fortawesome/free-solid-svg-icons'
 import Header from './Header';
 import { useAuth } from "../contexts/AuthContext"
+import ImageArea from './ImageArea'
 
 function CreatePost() {
   const history = useHistory();
@@ -19,8 +18,7 @@ function CreatePost() {
   const { currentUser } = useAuth();
   const authorId = currentUser.uid;
 
-  const [preview, setPreview] = useState([]),
-        [imageUrl, setImageUrl] = useState(''),
+  const [images, setImages] = useState([]),
         [postName, setPostName] = useState(''),
         [publishedDate, setPublishedDate] = useState(''),
         [price, setPrice] = useState(''),
@@ -81,24 +79,13 @@ function CreatePost() {
     })
   }
   
-  const onImageChange = async event => {
-    let image = event.target;
-    setPreview(window.URL.createObjectURL(image.files[0]));
-    for (let i = 0; i < image.files.length; i++) {
-      const imageRef = storage.ref('images').child(image.files[i].name);
-      await imageRef.put(image.files[i]);
-      setImageUrl(await imageRef.getDownloadURL())
-    }
-    image = '';
-  };
-  
   const addPost = (event) => {
     event.preventDefault();
     
     const data = {
       postId: postId,
       postName: postName,
-      imageUrl: imageUrl,
+      images: images,
       authorId: authorId,
       description: description,
       price: price,
@@ -127,8 +114,7 @@ function CreatePost() {
       console.log(err)
     })
 
-    setImageUrl('');
-    setPreview('');
+    setImages([]);
     setPostName('');
     setDescription('');
     setPrice('');
@@ -149,7 +135,7 @@ function CreatePost() {
       db.collection('posts').doc(postId).get().then(snapshot => {
         const post = snapshot.data()
         console.log(post)
-        setPreview(post.imageUrl);
+        setImages(post.images);
         setPostName(post.postName);
         setPublishedDate(post.publishedDate);
         setPrice(post.price);
@@ -169,14 +155,7 @@ function CreatePost() {
     <>
       <Header title={"投稿・編集"}/>
       <div className="container justify-content-center">
-        <img id="preview" src={preview} alt="プレビュー画像"/>
-        <div className="row mb-2">
-          <label htmlFor="photo" className="col-4">
-            <FontAwesomeIcon icon={faImages} size="lg" />
-          </label>
-          <input id="photo" className="inputPhoto col-8" type="file" name="image" accept="image/*" 
-          onChange={onImageChange}/>
-        </div>
+        <ImageArea images={images} setImages={setImages} />
         <div className="row mb-4 mt-4">
           <input 
             type="text" 

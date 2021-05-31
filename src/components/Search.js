@@ -32,7 +32,7 @@ function Search() {
     return(
       <Post 
         key={post.postId}
-        imageUrl={post.imageUrl}
+        images={post.images}
         postId={post.postId}
         postName={post.postName}
         price={post.price}

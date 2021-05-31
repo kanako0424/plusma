@@ -1,39 +1,40 @@
 import React from 'react'
 import UserInfo from './UserInfo';
+import NoImage from '../images/no_image.png'
 
-function PostDetailsPost(props) {
+function PostDetailsPost({postName, authorId, images, publishedDate, price, memo, answer, category, link, rating, scoreOfPracticeExam, universityName, description }) {
 
   return(
     <div className="container justify-content-center post-details">
       <div>
-        <img src={props.imageUrl} alt="商品サムネイル"/>
+        <img src={images.path} alt="商品サムネイル"/>
       </div>
-      <p className="mb-1">{props.postName}</p>
+      <p className="mb-1">{postName}</p>
       <table className="mb-3" width="100%">
         <tbody>
           <tr>
             <th>作成者</th>
-            <td><UserInfo id="author" authorId={props.authorId}/></td>
+            <td><UserInfo id="author" authorId={authorId}/></td>
           </tr>
           <tr>
             <th scope="col-4">出版年</th>
-            <td>{props.publishedDate}</td>
+            <td>{publishedDate}</td>
           </tr>
           <tr>
             <th scope="col-4">価格</th>
-            <td>¥ {props.price}</td>
+            <td>¥ {price}</td>
           </tr>
           <tr>
             <th>種類</th>
             <td>
               <span>
-                <input id="memo" type="checkbox" checked={props.memo}  readOnly/>
+                <input id="memo" type="checkbox" checked={memo}  readOnly/>
               </span>
               <label htmlFor="memo">
                 メモ
               </label>
               <span>
-                <input id="answer" type="checkbox" checked={props.answer} readOnly/>
+                <input id="answer" type="checkbox" checked={answer} readOnly/>
               </span>
               <label htmlFor="answer">
                 解答
@@ -42,12 +43,12 @@ function PostDetailsPost(props) {
           </tr>
           <tr>
             <th>カテゴリー</th>
-            <td>{props.category}</td>
+            <td>{category}</td>
           </tr>
           <tr>
             <th>商品リンク</th>
             <td>
-              <a href={props.link} target="_blank" rel="noreferrer">外部サイトへ飛びます</a>
+              <a href={link} target="_blank" rel="noreferrer">外部サイトへ飛びます</a>
             </td>
           </tr>
         </tbody>
@@ -57,26 +58,34 @@ function PostDetailsPost(props) {
         <tbody>
           <tr className="">
             <th>学校の評定</th>
-            <td>{props.rating} / 5</td>
+            <td>{rating} / 5</td>
           </tr>
           <tr>
             <th>模試の点数</th>
-            <td>{props.scoreOfPracticeExam}</td>
+            <td>{scoreOfPracticeExam}</td>
           </tr>
           <tr>
             <th>合格大学</th>
-            <td>{props.universityName}</td>
+            <td>{universityName}</td>
           </tr>
         </tbody>
       </table>
       <div className="">
         <p className="mb-1">■推しポイント!</p>
         <div className="mb-3">
-        {props.description} 
+        {description} 
         </div>
-        <div>
-          <img src={props.imageUrl} alt="商品の画像"/>
-        </div>
+        {images.length === 0 ? (
+          <div>
+            <img src={NoImage} alt="画像なし"/>
+          </div>
+        ) : (
+          images.map(image => (
+            <div key={image.id}>
+              <img src={image.path} alt="商品画像"/>
+            </div>
+          ))
+        )}
       </div>
     </div>
   )

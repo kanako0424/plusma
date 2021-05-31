@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import '../App.css';
 
-function Post({ postId, postName, nickname, price, imageUrl }) {
+function Post({ postId, postName, nickname, price, images }) {
 
   return (
     // react-bootstrapでメディアクエリを実装する
@@ -10,12 +10,12 @@ function Post({ postId, postName, nickname, price, imageUrl }) {
       <Link 
         target="_blank" 
         to={{
-          pathname: `posts/${postId}`,
+          pathname: `/posts/${postId}`,
           state: {nickname: nickname}
         }}
       >
         <div className="thumbnail">
-          <img src={imageUrl} alt="アップロード写真"/>
+          <img src={images[0].path} alt="サムネイル写真"/>
           <span className="price-tag">¥{price}</span>
         </div>
         <figcaption>{postName}</figcaption>
