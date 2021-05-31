@@ -161,7 +161,6 @@ function CreatePost() {
         setScoreOfPracticeExam(post.scoreOfPracticeExam);
         setUniversityName(post.universityName);
         setDescription(post.description);
-        console.log(post.description, description)
       })
     }
   }, [postId])
@@ -312,6 +311,7 @@ function CreatePost() {
           <button 
             type="submit" 
             className=" submit col-4"
+            disabled={!postName}
             style={{ maxWidth: "400px" }}
             onClick={addPost}
           >

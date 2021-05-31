@@ -13,7 +13,10 @@ function Search() {
   console.log(keyword)
 
   const fetchData = () => {
-    db.collection("posts").where("postName", "==", keyword).get().then((snapshot) => {
+    db.collection("posts")
+    .where("postName", "==", keyword)
+    .where("isDeleted", "==", false)
+    .get().then((snapshot) => {
       const postArray = snapshot.docs.map(doc => {
         return {
           postName: doc.postName,

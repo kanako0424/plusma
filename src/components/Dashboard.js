@@ -9,8 +9,8 @@ import "react-bootstrap"
 export default function Dashboard() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    db.collection('posts')
-      .where('isDeleted', '==', false)
+    db.collection("posts")
+      .where("isDeleted", "==", false)
       .get().then((snapshot) => {
         const postArray = snapshot.docs.map(doc => {
           return {
@@ -24,7 +24,6 @@ export default function Dashboard() {
   }, []);
   
   const postListItems = posts.map(post => {
-    console.log(post);
     return(
       <Post 
         key={post.postId}

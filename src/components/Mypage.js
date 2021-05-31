@@ -13,7 +13,10 @@ function Mypage() {
   const [posts, setPosts] = useState([])
 
   const fetchCreatedPosts = () => {
-    db.collection('posts').where('authorId', '==', userId).get().then(snapshot => {
+    db.collection('posts')
+      .where('authorId', '==', userId)
+      .where("isDeleted", "==", false)
+      .get().then(snapshot => {
       const postArray = snapshot.docs.map(doc => {
         return {
           postName: doc.postName,
@@ -26,7 +29,6 @@ function Mypage() {
 
   //return関連
   const postListItems = posts.map(post => {
-    console.log(post);
     return(
       <Post 
         key={post.postId}
@@ -37,8 +39,6 @@ function Mypage() {
       />
     );
   });
-
-  console.log(posts)
 
   return (
     <>
