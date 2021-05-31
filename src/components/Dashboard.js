@@ -19,6 +19,7 @@ export default function Dashboard() {
           }
         });
         setPosts(postArray);
+
       })
       .catch(err => {console.log(err)})
   }, []);

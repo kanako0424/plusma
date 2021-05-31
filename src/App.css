@@ -132,7 +132,7 @@ p {
 .thumbnail img {
   width: 100%;
   height: 100%;
-  border-radius: 15px;
+  border-radius: 8px;
 }
 
 .price-tag {
@@ -153,8 +153,20 @@ p {
   margin: auto;
 }
 
-.post-details img {
+.post-details_thumbnail {
   width: 100%;
+  border-radius: 15px;
+}
+
+/* .post-details_img-div {
+  width: 100%; */
+
+/* } */
+
+.post-details_img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
 }
 
 .post-details input, .post-details textarea {

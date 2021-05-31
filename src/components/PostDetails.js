@@ -36,18 +36,21 @@ function PostDetails() {
     }
     
     useEffect(() => {
-      db.collection('posts').doc(postId).get().then((doc) => {
-        setPost(doc.data());
+      db.collection('posts').doc(postId).get().then(doc => {
+        const post = doc.data()
+        setPost(post)
+        console.log(post.images)
       }).catch(err => {
         console.log(err);
-      });
-    }, [postId]);
+      })
+    }, [postId])
         
     //ここからはreaturn
     if (currentUser.uid !== post.authorId) {
       return(
         <>
       <Header title={"商品詳細"}/>
+      {post.images && (
       <PostDetailsPost 
         key={postId}
         postId={postId}
@@ -65,6 +68,7 @@ function PostDetails() {
         universityName={post.universityName}
         description={post.description}
       />
+      )}
       <NavBar />
       </>
     )
@@ -73,6 +77,7 @@ function PostDetails() {
         return(
         <>
         <Header title={"商品詳細"}/>
+        {post.images && (
         <PostDetailsPost 
           key={postId}
           postId={postId}
@@ -90,6 +95,7 @@ function PostDetails() {
           universityName={post.universityName}
           description={post.description}
         />
+        )}
         <div width="100%">
           <div className="row justify-content-center">
             <Link className="col-4 submit" to={{pathname: `/create-post/${postId}`}}>

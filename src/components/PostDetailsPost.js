@@ -7,7 +7,7 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
   return(
     <div className="container justify-content-center post-details">
       <div>
-        <img src={images.path} alt="商品サムネイル"/>
+        <img className="post-details_thumbnail" src={images[0].path} alt="商品サムネイル"/>
       </div>
       <p className="mb-1">{postName}</p>
       <table className="mb-3" width="100%">
@@ -75,17 +75,21 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
         <div className="mb-3">
         {description} 
         </div>
-        {images.length === 0 ? (
-          <div>
-            <img src={NoImage} alt="画像なし"/>
+        <div className="d-flex container">
+          <div className="row post-details_container">
+            {images.length === 0 ? (
+              <div>
+                <img src={NoImage} alt="画像なし"/>
+              </div>
+            ) : (
+              images.map(image => (
+                <div className="col-6 col-md-4 col-lg-3 post-details_img-div" key={image.id}>
+                  <img className="post-details_img" src={image.path} alt="投稿画像"/>
+                </div>
+              ))
+            )}
           </div>
-        ) : (
-          images.map(image => (
-            <div key={image.id}>
-              <img src={image.path} alt="商品画像"/>
-            </div>
-          ))
-        )}
+        </div>
       </div>
     </div>
   )
