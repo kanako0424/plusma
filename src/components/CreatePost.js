@@ -29,21 +29,43 @@ function CreatePost() {
         [category, setCategory] = useState(''),
         [link, setLink] = useState(''),
         [rating, setRating] = useState(''),
-        [scoreOfPracticeExam, setscoreOfPracticeExam] = useState(''),
+        [scoreOfPracticeExam, setScoreOfPracticeExam] = useState(''),
         [universityName, setUniversityName] = useState(''),
         [description, setDescription] = useState('');
 
-  const inputPostName = useCallback(event => {setPostName(event.target.value)}, [setPostName]);
-  const inputPublishedDate = useCallback(event => {setPublishedDate(event.target.value)}, [setPublishedDate]);
-  const inputPrice = useCallback(event => {setPrice(event.target.value)}, [setPrice]);
-  const inputMemo = useCallback((event) => {setMemo(event.target.checked)}, [setMemo]);
-  const inputAnswer = useCallback((event) => {setAnswer(event.target.checked)}, [setAnswer]);
-  const inputCategory = useCallback(event => {setCategory(event.target.value)}, [setCategory]);
-  const inputLink = useCallback(event => {setLink(event.target.value)}, [setLink]);
-  const inputRating = useCallback(event => {setRating(event.target.value)}, [setRating]);
-  const inputScoreOfPracticeExam = useCallback(event => {scoreOfPracticeExam(event.target.value)}, [setscoreOfPracticeExam]);
-  const inputUniversityName = useCallback(event => {setUniversityName(event.target.value)}, [setUniversityName]);
-  const inputDescripion = useCallback((event) => {setDescription(event.target.value)}, [setDescription]);
+  const inputPostName = useCallback(event => {
+    setPostName(event.target.value)
+  }, [setPostName]);
+  const inputPublishedDate = useCallback(event => {
+    setPublishedDate(event.target.value)
+  }, [setPublishedDate]);
+  const inputPrice = useCallback(event => {
+    setPrice(event.target.value)
+  }, [setPrice]);
+  const inputMemo = useCallback(event => {
+    setMemo(event.target.checked)
+  }, [setMemo]);
+  const inputAnswer = useCallback(event => {
+    setAnswer(event.target.checked)
+  }, [setAnswer]);
+  const inputCategory = useCallback(event => {
+    setCategory(event.target.value)
+  }, [setCategory]);
+  const inputLink = useCallback(event => {
+    setLink(event.target.value)
+  }, [setLink]);
+  const inputRating = useCallback(event => {
+    setRating(event.target.value)
+  }, [setRating]);
+  const inputScoreOfPracticeExam = useCallback(event => {
+    setScoreOfPracticeExam(event.target.value)
+  }, [setScoreOfPracticeExam]);
+  const inputUniversityName = useCallback(event => {
+    setUniversityName(event.target.value)
+  }, [setUniversityName]);
+  const inputDescripion = useCallback((event) => {
+    setDescription(event.target.value)
+  }, [setDescription]);
 
   const addCreatedPost = (postId) => {
     const userRef = db.collection('users').doc(authorId);
@@ -113,7 +135,7 @@ function CreatePost() {
     setLink('');
     setPublishedDate('');
     setRating('');
-    setscoreOfPracticeExam('');
+    setScoreOfPracticeExam('');
     setCategory('');
     setUniversityName('');
     setMemo(false);
@@ -136,7 +158,7 @@ function CreatePost() {
         setCategory(post.category);
         setLink(post.link);
         setRating(post.rating);
-        setscoreOfPracticeExam(post.scoreOfPracticeExam);
+        setScoreOfPracticeExam(post.scoreOfPracticeExam);
         setUniversityName(post.universityName);
         setDescription(post.description);
         console.log(post.description, description)
