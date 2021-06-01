@@ -16,9 +16,16 @@ function NavBar() {
       <a href="/">{home}</a>
       <a href="/search">{search}</a>
       <a href="/create-post">{plus}</a>
-      <Link to={{pathname: `/users/${currentUser.uid}`}}>
-        {user}
-      </Link>
+      {currentUser ? (
+        <Link to={{pathname: `/users/${currentUser.uid}`}}>
+          {user}
+        </Link>
+        ) : (
+          <Link to={{pathname: `/login`}}>
+          {user}
+        </Link>
+      )}
+      
     </div>
 
   )
