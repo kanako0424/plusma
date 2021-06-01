@@ -9,7 +9,7 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
       <div>
         <img className="post-details_thumbnail" src={images[0].path} alt="商品サムネイル"/>
       </div>
-      <p className="mb-1">{postName}</p>
+      <p className="mb-1" id="postName">{postName}</p>
       <table className="mb-3" width="100%">
         <tbody>
           <tr>

@@ -48,7 +48,7 @@ function Header({title}) {
                 </Link>
               </div>
               <div>
-                <button variant="link" onClick={handleLogout}>
+                <button onClick={handleLogout}>
                   ログアウト
                 </button>
               </div>
