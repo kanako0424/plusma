@@ -14,7 +14,6 @@ function UserInfo({authorId}) {
       .catch(err => {
         console.log(err)
       });
-    console.log(authorName);
 
     return unsubscribe
   }, [authorId, authorName])

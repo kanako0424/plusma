@@ -6,10 +6,12 @@ import NavBar from './NavBar';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Profile from './Profile';
 import Post from './Post'
+import { useAuth } from "../contexts/AuthContext"
+import LoginStatement from './LoginStatement';
 
 function Mypage() {
+  const {currentUser} = useAuth()
   const userId = window.location.href.slice(-28);
-
   const [posts, setPosts] = useState([])
 
   const fetchCreatedPosts = () => {
@@ -43,14 +45,20 @@ function Mypage() {
   return (
     <>
     <Header title={"My Page"}/>
-    <Profile userId={userId}/>
-    <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
-    <div className="d-flex conatiner">
-      <div  className="row">
-        {postListItems}
+    {currentUser.email ? (
+      <>
+      <Profile userId={userId}/>
+      <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
+      <div className="d-flex conatiner">
+        <div  className="row">
+          {postListItems}
+        </div>
       </div>
-    </div>
-    <NavBar />
+      </>
+     ) : (
+      <LoginStatement />
+     )}
+    <NavBar/>
     </>
   )
 }

@@ -9,7 +9,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState("anonymous")
   const [loading, setLoading] = useState(true)
   
   function signup(email, password) {
@@ -41,15 +41,16 @@ export function AuthProvider({ children }) {
       setCurrentUser(user)
       setLoading(false)
       if (!user) {
-        // 匿名ログインする
+        // 匿名ログイン
         auth.signInAnonymously();
+        console.log(user)
       }
       // ログイン時
       else {
         // ログイン済みのユーザー情報があるかをチェック
         var userDoc = await db.collection('users').doc(user.uid).get();
         const userId = user.uid;
-        if (!userDoc.exists) {
+        if (user.email && !userDoc.exists) {
           // Firestore にユーザー用のドキュメントが作られていなければ作る
           await userDoc.ref.set({
             nickname: '名無しさん',

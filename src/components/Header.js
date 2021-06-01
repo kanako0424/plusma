@@ -4,6 +4,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import LoginStatement from "./LoginStatement"
 
 function Header({title}) {
   const history = useHistory();
@@ -25,9 +26,6 @@ function Header({title}) {
       setError("ログアウトに失敗しました。")
     }
   }
-
-  const loginStatement = <Link to="/login">ログインして投稿しよう</Link>
-
   
   return (
     <div className="header">
@@ -54,7 +52,7 @@ function Header({title}) {
               </div>
             </div> 
           ) : (
-            <div>{loginStatement}</div>
+            <LoginStatement/>
           )}
           <a target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfi_VBq8nOqhkknxDfTCn3gUdzRD32rJtexpW9wjSzaIKQ3Pw/viewform?usp=sf_link">お問い合わせ</a>
         </div>

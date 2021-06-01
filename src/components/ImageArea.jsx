@@ -17,7 +17,7 @@ function ImageArea(props) {
       props.setImages(newImages);
       return storage.ref('images').child(id).delete()
     }
-  }, [images])
+  }, [props, images])
 
   const uploadImage = useCallback((event) => {
     //dispatch(showLoadingAction("uploading..."))
@@ -43,7 +43,7 @@ function ImageArea(props) {
       console.log(err)
       //dispatch(hideLoadingAction())
     });
-  }, [props.setImages])
+  }, [props])
 
   return (
     <div>

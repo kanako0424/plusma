@@ -39,7 +39,6 @@ function PostDetails() {
       db.collection('posts').doc(postId).get().then(doc => {
         const post = doc.data()
         setPost(post)
-        console.log(post.images)
       }).catch(err => {
         console.log(err);
       })
@@ -49,52 +48,52 @@ function PostDetails() {
     if (currentUser.uid !== post.authorId) {
       return(
         <>
-      <Header title={"商品詳細"}/>
-      {post.images && (
-      <PostDetailsPost 
-        key={postId}
-        postId={postId}
-        authorId={post.authorId}
-        postName={post.postName}
-        images={post.images}
-        publishedDate={post.publishedDate}
-        price={post.price}
-        memo={post.memo}
-        answer={post.answer}
-        category={post.category}
-        link={post.link}
-        rating={post.rating}
-        scoreOfPracticeExam={post.scoreOfPracticeExam}
-        universityName={post.universityName}
-        description={post.description}
-      />
-      )}
-      <NavBar />
-      </>
-    )
+        <Header title={"商品詳細"}/>
+        {post.images && (
+          <PostDetailsPost 
+            key={postId}
+            postId={postId}
+            authorId={post.authorId}
+            postName={post.postName}
+            images={post.images}
+            publishedDate={post.publishedDate}
+            price={post.price}
+            memo={post.memo}
+            answer={post.answer}
+            category={post.category}
+            link={post.link}
+            rating={post.rating}
+            scoreOfPracticeExam={post.scoreOfPracticeExam}
+            universityName={post.universityName}
+            description={post.description}
+          />
+        )}
+        <NavBar />
+        </>
+      )
     } else {
       if (!post.isDeleted) {
         return(
         <>
         <Header title={"商品詳細"}/>
         {post.images && (
-        <PostDetailsPost 
-          key={postId}
-          postId={postId}
-          authorId={post.authorId}
-          postName={post.postName}
-          images={post.images}
-          publishedDate={post.publishedDate}
-          price={post.price}
-          memo={post.memo}
-          answer={post.answer}
-          category={post.category}
-          link={post.link}
-          rating={post.rating}
-          scoreOfPracticeExam={post.scoreOfPracticeExam}
-          universityName={post.universityName}
-          description={post.description}
-        />
+          <PostDetailsPost 
+            key={postId}
+            postId={postId}
+            authorId={post.authorId}
+            postName={post.postName}
+            images={post.images}
+            publishedDate={post.publishedDate}
+            price={post.price}
+            memo={post.memo}
+            answer={post.answer}
+            category={post.category}
+            link={post.link}
+            rating={post.rating}
+            scoreOfPracticeExam={post.scoreOfPracticeExam}
+            universityName={post.universityName}
+            description={post.description}
+          />
         )}
         <div width="100%">
           <div className="row justify-content-center">

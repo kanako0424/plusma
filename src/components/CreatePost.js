@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import Header from './Header';
 import { useAuth } from "../contexts/AuthContext"
 import ImageArea from './ImageArea'
+import LoginStatement from './LoginStatement'
 
 function CreatePost() {
   const history = useHistory();
@@ -153,7 +154,8 @@ function CreatePost() {
 
   return (
     <>
-      <Header title={"投稿・編集"}/>
+    <Header title={"投稿・編集"}/>
+    {currentUser.email ? (
       <div className="container justify-content-center">
         <ImageArea images={images} setImages={setImages} />
         <div className="row mb-4 mt-4">
@@ -298,7 +300,8 @@ function CreatePost() {
           </button>
         </div>
       </div>
-      <NavBar />
+    ) : (<LoginStatement/>)}
+    <NavBar />
     </>
   )
 };
