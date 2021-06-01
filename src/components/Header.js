@@ -6,11 +6,15 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 function Header({title}) {
+  const history = useHistory();
 
   const [error, setError] = useState("")
+  const [display, setDisplay] = useState(false)
   const { currentUser, logout } = useAuth()
   
-  const history = useHistory();
+  const toggleSetting = () => {
+    setDisplay(!display)
+  }
 
   const handleLogout = async (e) => {
     setError("")
@@ -22,32 +26,38 @@ function Header({title}) {
     }
   }
 
-  const loginStatement = (e) => {
-    if (!currentUser) {
-      return (
-        <Link to="/login">ログインして投稿しよう</Link>
-      )
-    } 
-  }
+  const loginStatement = <Link to="/login">ログインして投稿しよう</Link>
+
   
   return (
     <div className="header">
-      <span className="title">{title}</span>
-      <button><FontAwesomeIcon icon={faBars} /></button>
-      <div className="container text-center">
-        <div className="row">
-          <p className="col-12">アカウント設定</p>
+      <div className="d-flex align-items-center">
+        <button onClick={() => toggleSetting()}><FontAwesomeIcon icon={faBars} /></button>
+        <span className="title">{title}</span>
+      </div>
+      <div className={display ? null : 'display_none'} >
+        <div>
+          <h5>アカウント設定</h5>
           {error && <Alert variant="danger">{error}</Alert>}
-          <p className="col-12">Email:{currentUser.email}</p>
-          <Link to="/update-profile" className="col-12">
-            アカウント設定の変更
-          </Link>
-          <button className="submit" variant="link" onClick={handleLogout}>
-            ログアウト
-          </button>
-          <a className="col-12" target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfi_VBq8nOqhkknxDfTCn3gUdzRD32rJtexpW9wjSzaIKQ3Pw/viewform?usp=sf_link">お問い合わせ</a>
+          {currentUser ? (
+            <div>
+              <p>Email:{currentUser.email}</p>
+              <div>
+                <Link to="/update-profile">
+                  アカウント設定の変更
+                </Link>
+              </div>
+              <div>
+                <button variant="link" onClick={handleLogout}>
+                  ログアウト
+                </button>
+              </div>
+            </div> 
+          ) : (
+            <div>{loginStatement}</div>
+          )}
+          <a target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfi_VBq8nOqhkknxDfTCn3gUdzRD32rJtexpW9wjSzaIKQ3Pw/viewform?usp=sf_link">お問い合わせ</a>
         </div>
-        <div>{loginStatement()}</div>
       </div>
     </div>
   )
