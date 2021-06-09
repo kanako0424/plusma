@@ -6,7 +6,6 @@ import { Alert } from "react-bootstrap"
 
 function Profile({ userId }) {
   const {currentUser} = useAuth();
-
   const [linkForMercari, setLinkForMercari] = useState('');
   const [nickname, setNickname] = useState('');
   const [profileDesc, setProfileDesc] = useState('');

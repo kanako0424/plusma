@@ -5,13 +5,16 @@ import { Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import LoginStatement from "./LoginStatement"
+import { auth } from '../firebase'
+
 
 function Header({title}) {
   const history = useHistory();
 
   const [error, setError] = useState("")
   const [display, setDisplay] = useState(false)
-  const { currentUser, logout } = useAuth()
+  const currentUser = useAuth.currentUser
+  //const logout = useAuth().logout
   
   const toggleSetting = () => {
     setDisplay(!display)
@@ -20,7 +23,7 @@ function Header({title}) {
   const handleLogout = async (e) => {
     setError("")
     try {
-      await logout()
+      await auth.signOut()
       history.push("/login")
     } catch {
       setError("ログアウトに失敗しました。")

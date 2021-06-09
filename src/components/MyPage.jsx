@@ -9,9 +9,9 @@ import Post from './Post'
 import { useAuth } from "../contexts/AuthContext"
 import LoginStatement from './LoginStatement';
 
-function Mypage() {
+function UserPage() {
   const {currentUser} = useAuth()
-  const userId = window.location.href.slice(-28);
+  const userId = currentUser.uid;
   const [posts, setPosts] = useState([])
 
   const fetchCreatedPosts = () => {
@@ -42,10 +42,12 @@ function Mypage() {
     );
   });
 
+  console.log(currentUser.uid)
+
   return (
     <>
-    <Header title={"My Page"}/>
-    {currentUser.email ? (
+    <Header title={"User Page"}/>
+    {currentUser.uid ? (
       <>
       <Profile userId={userId}/>
       <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
@@ -63,4 +65,4 @@ function Mypage() {
   )
 }
 
-export default Mypage
+export default UserPage

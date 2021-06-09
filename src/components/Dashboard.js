@@ -5,7 +5,6 @@ import Post from './Post'
 import Header from "./Header"
 import "react-bootstrap"
 
-
 export default function Dashboard() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {

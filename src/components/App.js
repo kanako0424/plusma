@@ -9,10 +9,11 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import CreatePost from "./CreatePost"
 import Search from "./Search"
-import Mypage from "./Mypage"
+import MyPage from "./MyPage"
 import '../App.css';
 import PostDetails from "./PostDetails"
 import NotFound from './404'
+import UserPage from "./UserPage"
 /*eslint no-undef: "error"*/
 
 function App() {
@@ -20,21 +21,23 @@ function App() {
   return (
     <div>
       <Router>
-        <AuthProvider>
-          <Switch>
-            <Route exact path="/" component={Dashboard}/>
-            <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <Route path="/create-post(/:id)?" component={CreatePost} />
-            <Route path="/search" component={Search} />
-            {/* <Route path="/my-page" component={Mypage} /> */}
-            <Route path="/users/:id" component={Mypage} />
-            <Route path="/posts/:id" component={PostDetails} />
-            <Route component={NotFound} />
-          </Switch>
-        </AuthProvider>
+        <Switch>
+          <Route path="/search" component={Search} />
+          <Route exact path="/" component={Dashboard}/>
+          <AuthProvider>
+            <Switch>
+              <PrivateRoute path="/mypage" component={MyPage} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              <PrivateRoute path="/create-post(/:id)?" component={CreatePost} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path="/forgot-password" component={ForgotPassword} />
+              <Route path="/user/:id" component={UserPage} />
+              <Route path="/posts/:id" component={PostDetails} />
+              <Route component={NotFound} />
+            </Switch>
+          </AuthProvider>
+        </Switch>
       </Router>
     </div>
   )

@@ -9,7 +9,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState("anonymous")
+  const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
   
   function signup(email, password) {
@@ -40,13 +40,7 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user)
       setLoading(false)
-      if (!user) {
-        // 匿名ログイン
-        auth.signInAnonymously();
-        console.log(user)
-      }
-      // ログイン時
-      else {
+      if (user) {
         // ログイン済みのユーザー情報があるかをチェック
         var userDoc = await db.collection('users').doc(user.uid).get();
         const userId = user.uid;
