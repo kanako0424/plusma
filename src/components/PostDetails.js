@@ -45,8 +45,8 @@ function PostDetails() {
     }, [postId])
         
     //ここからはreaturn
-    if (currentUser.uid !== post.authorId) {
-      return(
+    if (!post.isDeleted) {
+      return (
         <>
         <Header title={"商品詳細"}/>
         {post.images && (
@@ -68,53 +68,31 @@ function PostDetails() {
             description={post.description}
           />
         )}
+        {(() => {
+          if (currentUser.uid == post.authorId) {
+            return (
+              <div width="100%">
+                <div className="row justify-content-center">
+                  <Link className="col-4 submit" to={{pathname: `/create-post/${postId}`}}>
+                    編集する
+                  </Link>
+                </div>
+                <div className="row justify-content-center">
+                  <button className="col-4 submit" onClick={() => deletePost()}>
+                    削除する
+                  </button>
+                </div>
+              </div>
+            )
+          }
+        })()}
         <NavBar />
         </>
       )
     } else {
-      if (!post.isDeleted) {
-        return(
-        <>
-        <Header title={"商品詳細"}/>
-        {post.images && (
-          <PostDetailsPost 
-            key={postId}
-            postId={postId}
-            authorId={post.authorId}
-            postName={post.postName}
-            images={post.images}
-            publishedDate={post.publishedDate}
-            price={post.price}
-            memo={post.memo}
-            answer={post.answer}
-            category={post.category}
-            link={post.link}
-            rating={post.rating}
-            scoreOfPracticeExam={post.scoreOfPracticeExam}
-            universityName={post.universityName}
-            description={post.description}
-          />
-        )}
-        <div width="100%">
-          <div className="row justify-content-center">
-            <Link className="col-4 submit" to={{pathname: `/create-post/${postId}`}}>
-              編集する
-            </Link>
-          </div>
-          <div className="row justify-content-center">
-            <button className="col-4 submit" onClick={() => deletePost()}>
-              削除する
-            </button>
-          </div>
-        </div>
-        <NavBar />
-        </>
-        )
-      } else {
-        return (
-          <NotFound />
-        );
-      }
+      return (
+        <NotFound />
+      );
     } 
 }
 
