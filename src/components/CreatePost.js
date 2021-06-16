@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import { db } from '../firebase'
 import firebase from 'firebase/app'
 import '../App.css'
-import NavBar from './NavBar';
 import Header from './Header';
 import { useAuth } from "../contexts/AuthContext"
 import ImageArea from './ImageArea'
@@ -328,7 +327,6 @@ function CreatePost() {
         </div>
       </div>
     ) : (<LoginStatement/>)}
-    <NavBar />
     </>
   )
 };

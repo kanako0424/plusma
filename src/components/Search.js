@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import NavBar from './NavBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import Header from './Header'
@@ -65,7 +64,6 @@ function Search() {
           {postListItems}
         </div>
       </div>
-      <NavBar />
     </>
   )
 }

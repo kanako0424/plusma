@@ -13,7 +13,6 @@ function NavBar() {
       <Link to="/">{home}</Link>
       <Link to="/search">{search}</Link>
       <Link to="/create-post">{plus}</Link>
-      
       <Link to="/mypage">{user}</Link>
     </div>
   )

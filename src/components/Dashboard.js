@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { db } from "../firebase"
-import NavBar from './NavBar'
 import Post from './Post'
 import Header from "./Header"
 import "react-bootstrap"
@@ -43,7 +42,6 @@ export default function Dashboard() {
           {postListItems}
         </div>
       </div>
-      <NavBar />
     </>
   )
 }

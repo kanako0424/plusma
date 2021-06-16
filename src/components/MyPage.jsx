@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 import { db } from '../firebase'
 import '../App.css'
 import Header from './Header';
-import NavBar from './NavBar';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import MypageUserInfo from './MypageUserInfo';
 import MyPagePost from './MyPagePost'
 import { useAuth } from "../contexts/AuthContext"
@@ -60,7 +58,6 @@ function MyPage() {
      ) : (
       <LoginStatement />
      )}
-    <NavBar/>
     </>
   )
 }

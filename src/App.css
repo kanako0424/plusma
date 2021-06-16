@@ -94,16 +94,10 @@ p {
 }
 
 .nav_bar {
-  background-color: #F3EFE4;
-  box-shadow:  0px 14px 60px 0px rgba(0, 0, 0, 0.09);
   display: flex;
   margin: auto;
-  width: 90%;
-  height: 7vh;
-  border-radius: 50px;
-  position: fixed;
-  bottom: 10px;
-  left: 5%;
+  width: 40%;
+  /* border-radius: 50px; */
 }
 .nav_bar a {
   color: #282c34;
