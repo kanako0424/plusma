@@ -8,7 +8,6 @@ function MyPagePost({ postId, postName, nickname, price, images }) {
     // react-bootstrapでメディアクエリを実装する
     <figure className="post col-6 col-md-4 col-lg-3">
       <Link 
-        target="_blank" 
         to={{
           pathname: `/mypage/posts/${postId}`,
           state: {nickname: nickname}
