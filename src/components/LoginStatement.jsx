@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Header from './Header';
-import NavBar from './NavBar';
+// import Header from './Header';
+// import NavBar from './NavBar';
 
 function LoginStatement() {
   return (
