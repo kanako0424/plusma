@@ -24,7 +24,6 @@ function UserInfo({authorId}) {
         to={{
           pathname: `/users/${authorId}`
         }}
-        target="_blank"
       >
         {authorName}
       </Link>

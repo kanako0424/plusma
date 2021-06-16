@@ -48,7 +48,7 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
           <tr>
             <th>商品リンク</th>
             <td>
-              <a href={link} target="_blank" rel="noreferrer">外部サイトへ飛びます</a>
+              <a href={link} target="_blank" rel="noreferrer">販売サイトのリンク</a>
             </td>
           </tr>
         </tbody>

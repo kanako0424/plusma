@@ -80,7 +80,7 @@ export default function UpdateProfile() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-1">
-        <Link to="/">キャンセル</Link>
+        <Link to="/mypage">キャンセル</Link>
       </div>
     </>
   )
