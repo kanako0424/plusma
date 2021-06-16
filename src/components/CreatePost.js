@@ -107,6 +107,11 @@ function CreatePost() {
       postId = postRef.id;
       data.postId = postId;
     }
+ 
+    if (images.length === 0 ) {
+      const image = [{id: "noimage", path: "https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fno_image.png?alt=media&token=1cfee308-7694-451e-8792-bf82be5d540a"}]
+      data.images = image;
+    }
     
     db.collection('posts').doc(postId).set(data, {merge: true}).then(
       console.log('post is created')

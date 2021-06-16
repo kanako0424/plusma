@@ -4,7 +4,10 @@ import NoImage from '../images/no_image.png'
 
 function PostDetailsPost({postName, authorId, images, publishedDate, price, memo, answer, category, link, rating, scoreOfPracticeExam, universityName, description }) {
 
+  console.log(images)
   return(
+    <>
+    {images && (
     <div className="container justify-content-center post-details">
       <div>
         <img className="post-details_thumbnail" src={images[0].path} alt="商品サムネイル"/>
@@ -78,9 +81,9 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
         <div className="d-flex container">
           <div className="row post-details_container">
             {images.length === 0 ? (
-              <div>
+              <span>
                 <img src={NoImage} alt="画像なし"/>
-              </div>
+              </span>
             ) : (
               images.map(image => (
                 <div className="col-6 col-md-4 col-lg-3 post-details_img-div" key={image.id}>
@@ -92,6 +95,8 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
         </div>
       </div>
     </div>
+    )}
+    </>
   )
 }
 

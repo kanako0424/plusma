@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { db } from "../firebase"
 import PostDetailsPost from './PostDetailsPost';
 import Header from './Header';
-import NavBar from './NavBar'
 import NotFound from './404'
 
 function PostDetails() {
@@ -18,13 +17,12 @@ function PostDetails() {
     })
   }, [postId])
 
-  const images = post.images;
   const isDeleted = post.isDeleted;
 
   //ここからはreaturn
   return (
     <>
-    {images ? ( !isDeleted ? (
+    {post.images && ( !isDeleted ? (
       <>
       <Header title={"商品詳細"}/>
       <PostDetailsPost 
@@ -44,12 +42,10 @@ function PostDetails() {
         universityName={post.universityName}
         description={post.description}
       />
-      <NavBar />
       </>
       ) : (
         <NotFound />
-      )) : (<NotFound />)
-      } 
+      ))} 
     </>
   )
 }
