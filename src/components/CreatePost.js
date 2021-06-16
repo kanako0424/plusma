@@ -73,10 +73,10 @@ function CreatePost() {
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     }, {merge: true}).then(() => {
       console.log('createdPost is created')
-      history.push('/')
+      history.push('/mypage/posts/'+ postId)
       alert("投稿が作成されました")
     }).catch((err) => {
-      console.log(err)
+      window.alert(err)
     })
   }
   
@@ -112,7 +112,7 @@ function CreatePost() {
     db.collection('posts').doc(postId).set(data, {merge: true}).then(
       console.log('post is created')
     ).catch((err) => {
-      console.log(err)
+      window.alert(err)
     })
 
     setImages([]);

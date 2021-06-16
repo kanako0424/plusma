@@ -14,6 +14,7 @@ import '../App.css';
 import PostDetails from "./PostDetails"
 import NotFound from './404'
 import UserPage from "./UserPage"
+import MypagePostDetails from "./MypagePostDetails"
 /*eslint no-undef: "error"*/
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
           <Route exact path="/" component={Dashboard}/>
           <AuthProvider>
             <Switch>
-              <PrivateRoute path="/mypage" component={MyPage} />
+              <PrivateRoute exact path="/mypage" component={MyPage} />
+              <PrivateRoute path="/mypage/posts/:id" component={MypagePostDetails} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/create-post(/:id)?" component={CreatePost} />
               <Route path="/signup" component={Signup} />

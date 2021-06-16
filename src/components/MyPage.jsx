@@ -5,7 +5,7 @@ import Header from './Header';
 import NavBar from './NavBar';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Profile from './Profile';
-import Post from './Post'
+import MyPagePost from './MyPagePost'
 import { useAuth } from "../contexts/AuthContext"
 import LoginStatement from './LoginStatement';
 
@@ -32,7 +32,7 @@ function UserPage() {
   //return関連
   const postListItems = posts.map(post => {
     return(
-      <Post 
+      <MyPagePost 
         key={post.postId}
         images={post.images}
         postId={post.postId}
@@ -41,8 +41,6 @@ function UserPage() {
       />
     );
   });
-
-  console.log(currentUser.uid)
 
   return (
     <>
