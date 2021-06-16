@@ -17,7 +17,7 @@ function Post({ postId, postName, nickname, price, images }) {
           }}
         >
           <div className="thumbnail">
-            <img src={images[0].path} alt="サムネイル写真"/>
+            <img className="thumbnail-img" src={images[0].path} alt="サムネイル写真"/>
             <span className="price-tag">¥{price}</span>
           </div>
           <figcaption>{postName}</figcaption>

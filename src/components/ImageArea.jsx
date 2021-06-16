@@ -47,18 +47,20 @@ function ImageArea(props) {
 
   return (
     <div>
-      <div className="">
+      <div className="d-flex">
         {images.length > 0 && (
           images.map(image => 
           <div key={image.id} onClick={() => deleteImage(image.id)}>
-            <img alt="アイキャッチ画像" src={image.path} />
+            <img alt="アイキャッチ画像" src={image.path} className="thumbnail-img"/>
           </div>)
         )}
       </div>
       <div className="">
-        <span>商品画像を登録する</span>
-        <FontAwesomeIcon height="48px" wight="48px" icon={faImages} size="lg" />
-        <input className="u-display-none" type="file" id="image" onChange={e => uploadImage(e)}/>
+        <label htmlFor="image">
+          <span>商品画像を登録する</span>
+          <FontAwesomeIcon height="48px" wight="48px" icon={faImages} size="lg" />
+        </label>
+        <input className="display-none" type="file" id="image" onChange={e => uploadImage(e)}/>
       </div>
     </div>
   )

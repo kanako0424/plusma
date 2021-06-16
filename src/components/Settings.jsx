@@ -31,7 +31,7 @@ function Settings() {
   return (
     <div className="settings">
       <button onClick={() => toggleSetting()}><FontAwesomeIcon icon={faBars} /></button>
-      <div className={display ? null : 'display_none'} >
+      <div className={display ? null : 'display-none'} >
         <h5>アカウント設定</h5>
         {error && <Alert variant="danger">{error}</Alert>}
         {currentUser ? (

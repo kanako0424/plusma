@@ -1,7 +1,13 @@
+/* 元のタグに対しての指定 */
 body {
   background-color: #F3EFE4 !important;
   font-weight: 600 !important;
   padding-bottom: 60px;
+}
+
+p {
+  margin-top: 15px !important;
+  margin-bottom: 0 !important;
 }
 
 tr {
@@ -12,23 +18,14 @@ th {
   width: 30%;
 }
 
-[for="answer"], [for="memo"] {
-  padding: 0px 10px 0px 10px;
-}
-
 figure {
   margin: 0px !important;
-}
-
-.margin-auto {
-  display: flex;
-  justify-content: center;
-  margin: 15px auto;
 }
 
 label {
   margin-top: 20px;
 }
+
 input, textarea, button, select {
   border: none;
   background-color: #F3EFE4;
@@ -40,6 +37,13 @@ input, textarea, select {
   margin: 5px !important;
   padding: 5px !important;
   border-bottom: #282c34 1px solid;
+}
+
+
+/* input関連の指定 */
+
+[for="answer"], [for="memo"] {
+  padding: 0px 10px 0px 10px;
 }
 
 .submit {
@@ -62,14 +66,27 @@ input[type="checkbox"]{
   color: #282c34;
 }
 
-p {
-  margin-top: 15px !important;
-  margin-bottom: 0 !important;
+/* margin-auto, display-noneを指定 */
+.margin-auto {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+}
+/* 
+.list-style-none {
+  list-style: none;
+  display: inline;
+} */
+
+.display-none {
+  display: none;
 }
 
 .row {
   margin: 0 !important;
 }
+
+/* Header */
 
 .header {
   background-color: #F3EFE4;
@@ -92,14 +109,7 @@ p {
   padding: 0px 5px; 
 }
 
-.list-styles {
-  list-style: none;
-  display: inline;
-}
-
-.display_none {
-  display: none;
-}
+/* NavBar */
 
 .nav_bar {
   display: flex;
@@ -114,6 +124,8 @@ p {
   justify-content: center;
   align-items: center;
 }
+
+/* Post */
 
 .posts {
   padding-top: 10vh;
@@ -138,7 +150,7 @@ p {
   display: inline-block; 
 }
 
-.thumbnail img {
+.thumbnail-img {
   width: 100%;
   height: 100%;
   border-radius: 8px;
@@ -156,6 +168,8 @@ p {
   padding: 2px 5px;
   border-radius: 5px;
 }
+
+/* postDetails */
 
 .post-details {
   width: 85%;
@@ -175,15 +189,15 @@ p {
   object-fit: contain;
 }
 
-.post-details input, .post-details textarea {
-  box-shadow: none;
-}
+/* Settings */
 
 .settings > button {
   position: absolute;
   top: 24px;
   right: 40px;
 }
+
+/* Userpage & Mypage */
 
 #user-icon > img{
   width: 50px;
