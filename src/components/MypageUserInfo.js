@@ -4,7 +4,7 @@ import firebase from 'firebase/app'
 import { useAuth } from "../contexts/AuthContext"
 import { Alert } from "react-bootstrap"
 
-function Profile({ userId }) {
+function MypageUserInfo({ userId }) {
   const {currentUser} = useAuth();
   const [linkForMercari, setLinkForMercari] = useState('');
   const [nickname, setNickname] = useState('');
@@ -80,4 +80,4 @@ function Profile({ userId }) {
   }
 }
 
-export default Profile
+export default MypageUserInfo

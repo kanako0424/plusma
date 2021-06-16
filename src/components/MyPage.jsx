@@ -4,12 +4,13 @@ import '../App.css'
 import Header from './Header';
 import NavBar from './NavBar';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Profile from './Profile';
+import MypageUserInfo from './MypageUserInfo';
 import MyPagePost from './MyPagePost'
 import { useAuth } from "../contexts/AuthContext"
 import LoginStatement from './LoginStatement';
+import Settings from './Settings';
 
-function UserPage() {
+function MyPage() {
   const {currentUser} = useAuth()
   const userId = currentUser.uid;
   const [posts, setPosts] = useState([])
@@ -45,9 +46,10 @@ function UserPage() {
   return (
     <>
     <Header title={"User Page"}/>
+    <Settings />
     {currentUser.uid ? (
       <>
-      <Profile userId={userId}/>
+      <MypageUserInfo userId={userId}/>
       <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
       <div className="d-flex conatiner">
         <div  className="row">
@@ -63,4 +65,4 @@ function UserPage() {
   )
 }
 
-export default UserPage
+export default MyPage

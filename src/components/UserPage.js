@@ -4,7 +4,7 @@ import '../App.css'
 import Header from './Header';
 import NavBar from './NavBar';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Profile from './Profile';
+import Profile from './MypageUserInfo';
 import Post from './Post'
 import { useAuth } from "../contexts/AuthContext"
 import LoginStatement from './LoginStatement';

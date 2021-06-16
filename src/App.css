@@ -176,3 +176,9 @@ p {
 .post-details input, .post-details textarea {
   box-shadow: none;
 }
+
+.settings > button {
+  position: absolute;
+  top: 24px;
+  right: 40px;
+}

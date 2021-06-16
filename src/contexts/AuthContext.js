@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
       setCurrentUser(user)
       setLoading(false)
       if (user) {
-        // ログイン済みのユーザー情報があるかをチェック
+        // ログイン済みのユーザー情報がfirestoreにあるかをチェック
         var userDoc = await db.collection('users').doc(user.uid).get();
         const userId = user.uid;
         if (user.email && !userDoc.exists) {
