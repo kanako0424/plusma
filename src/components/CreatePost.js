@@ -221,13 +221,40 @@ function CreatePost() {
           <label htmlFor="category" className="col-4">
             カテゴリー
           </label>
-          <input 
-            type="text" 
+          <select 
             id="category" 
             className="col-8" 
             value={category}
             onChange={inputCategory} 
-          />
+          >
+            <optgroup label="国語">
+              <option value="現代文">現代文</option>
+              <option value="古文">古文</option>
+              <option value="漢文">漢文</option>
+            </optgroup>
+            <optgroup label="数学">
+              <option value="数学1A">数学1A</option>
+              <option value="数学2B">数学2B</option>
+              <option value="数学3">数学3</option>
+            </optgroup>
+            <optgroup label="社会">
+              <option value="現代社会">現代社会</option>
+              <option value="政治経済">政治経済</option>
+              <option value="倫理">倫理</option>
+              <option value="日本史">日本史</option>
+              <option value="世界史">世界史</option>
+              <option value="地理">地理</option>
+            </optgroup>
+            <optgroup label="理科">
+              <option value="物理">物理</option>
+              <option value="化学">化学</option>
+              <option value="生物">生物</option>
+              <option value="地学">地学</option>
+            </optgroup>
+            <optgroup label="英語">
+              <option value="英語">英語</option>
+            </optgroup>
+          </select>
         </div>
         <div className="row mb-2">
           <label htmlFor="link" className="col-4">
