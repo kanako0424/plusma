@@ -34,7 +34,7 @@ function App() {
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
-              <Route path="/user/:id" component={UserPage} />
+              <Route path="/users/:id" component={UserPage} />
               <Route path="/posts/:id" component={PostDetails} />
               <Route component={NotFound} />
             </Switch>

@@ -1,11 +1,9 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import { db } from '../firebase'
 import firebase from 'firebase/app'
-import { useAuth } from "../contexts/AuthContext"
 import { Alert } from "react-bootstrap"
 
 function MypageUserInfo({ userId }) {
-  const {currentUser} = useAuth();
   const [linkForMercari, setLinkForMercari] = useState('');
   const [nickname, setNickname] = useState('');
   const [profileDesc, setProfileDesc] = useState('');
@@ -19,6 +17,8 @@ function MypageUserInfo({ userId }) {
       setLinkForMercari(userData.linkForMercari);
       setNickname(userData.nickname);
       setProfileDesc(userData.profileDesc);
+    }).catch((err) => {
+      console.log(err)
     })
   }, [userId])
 
@@ -48,36 +48,20 @@ function MypageUserInfo({ userId }) {
     })
 
   }
-
-  if (currentUser.uid === userId) {
-    return (
-      <div className="d-flex">
-        <form className="container">
-        {error && <Alert variant="primary">{error}</Alert>}
-          <label htmlFor="nickname">ニックネーム</label>
-          <input id="nickname" onChange={inputNickname} value={nickname} className="row col-12"/>
-          <label htmlFor="link">メルカリへのリンク</label>
-          <input id="link" onChange={inputLinkForMercari} value={linkForMercari} className="row col-12"/>
-          <label htmlFor="profileDesc">プロフィール蘭</label>
-          <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className="row col-12"></textarea>
-        <button type="submit" onClick={updateProfile} className="row col-8 justify-content-center">プロフィールを更新</button>
-        </form>
-      </div>
-    ) 
-  } else {
-    return (
-      <div className="d-flex">
-        <form className="container">
-          <label htmlFor="nickname">ニックネーム</label>
-          <input id="nickname" readOnly value={nickname} className="row col-12"/>
-          <label htmlFor="link">メルカリへのリンク</label>
-          <input id="link" readOnly value={linkForMercari} className="row col-12"/>
-          <label htmlFor="profileDesc">プロフィール蘭</label>
-          <textarea id="profileDesc" readOnly value={profileDesc} className="row col-12"></textarea>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <div className="d-flex">
+      <form className="container">
+      {error && <Alert variant="primary">{error}</Alert>}
+        <label htmlFor="nickname">ニックネーム</label>
+        <input id="nickname" onChange={inputNickname} value={nickname} className="row col-12"/>
+        <label htmlFor="link">メルカリへのリンク</label>
+        <input id="link" onChange={inputLinkForMercari} value={linkForMercari} className="row col-12"/>
+        <label htmlFor="profileDesc">プロフィール蘭</label>
+        <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className="row col-12"></textarea>
+      <button type="submit" onClick={updateProfile} className="row col-8 justify-content-center">プロフィールを更新</button>
+      </form>
+    </div>
+  ) 
 }
 
 export default MypageUserInfo

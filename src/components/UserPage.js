@@ -1,18 +1,29 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { db } from '../firebase'
 import '../App.css'
 import Header from './Header';
 import NavBar from './NavBar';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Profile from './MypageUserInfo';
 import Post from './Post'
-import { useAuth } from "../contexts/AuthContext"
-import LoginStatement from './LoginStatement';
 
 function UserPage() {
-  const {currentUser} = useAuth()
   const userId = window.location.href.slice(-28);
   const [posts, setPosts] = useState([])
+  const [linkForMercari, setLinkForMercari] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [profileDesc, setProfileDesc] = useState('');
+  
+  useEffect(() => {
+    const userRef = db.collection('users').doc(userId);
+    userRef.get().then((snapshot) => {
+      const userData = snapshot.data();
+      setLinkForMercari(userData.linkForMercari);
+      setNickname(userData.nickname);
+      setProfileDesc(userData.profileDesc);
+    }).catch((err) => {
+      console.log(err)
+    })
+  }, [userId])
 
   const fetchCreatedPosts = () => {
     db.collection('posts')
@@ -45,9 +56,17 @@ function UserPage() {
   return (
     <>
     <Header title={"User Page"}/>
-    {currentUser ? (
       <>
-      <Profile userId={userId}/>
+      <div className="d-flex">
+        <form className="container">
+          <label htmlFor="nickname">ニックネーム</label>
+          <input id="nickname" readOnly value={nickname} className="row col-12"/>
+          <label htmlFor="link">メルカリへのリンク</label>
+          <input id="link" readOnly value={linkForMercari} className="row col-12"/>
+          <label htmlFor="profileDesc">プロフィール蘭</label>
+          <textarea id="profileDesc" readOnly value={profileDesc} className="row col-12"></textarea>
+        </form>
+      </div>
       <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
       <div className="d-flex conatiner">
         <div  className="row">
@@ -55,9 +74,6 @@ function UserPage() {
         </div>
       </div>
       </>
-     ) : (
-      <LoginStatement />
-     )}
     <NavBar/>
     </>
   )

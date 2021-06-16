@@ -7,7 +7,7 @@ service cloud.firestore {
     match /users/{userID} {
       allow create: if request.auth.uid != null;
       allow update, delete: if isUserAuthenticated(request.auth.uid);
-      allow read: if request.auth.uid != null;
+      allow read: if true;
 
       match /createdPosts/{postID} {
         allow read: if request.auth != null;
