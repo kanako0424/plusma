@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react'
 import { db } from '../firebase'
 import '../App.css'
 import Header from './Header';
-import NavBar from './NavBar';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Post from './Post'
 
 function UserPage() {
@@ -56,25 +54,22 @@ function UserPage() {
   return (
     <>
     <Header title={"User Page"}/>
-      <>
-      <div className="d-flex">
-        <form className="container">
-          <label htmlFor="nickname">ニックネーム</label>
-          <input id="nickname" readOnly value={nickname} className="row col-12"/>
-          <label htmlFor="link">メルカリへのリンク</label>
-          <input id="link" readOnly value={linkForMercari} className="row col-12"/>
-          <label htmlFor="profileDesc">プロフィール蘭</label>
-          <textarea id="profileDesc" readOnly value={profileDesc} className="row col-12"></textarea>
-        </form>
+    <div className="user-page">
+      <div className="">
+      <span id="user-icon" className=""><img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン" width="50px"/></span>
+      <span>{nickname}</span>
+      <span className="" id="link"><a href={linkForMercari} target="_blank" rel="noopener noreferrer">メルカリ</a></span>
       </div>
-      <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
-      <div className="d-flex conatiner">
-        <div  className="row">
-          {postListItems}
-        </div>
+      <div className="m-4">
+        <div id="profileDesc">{profileDesc}</div>
       </div>
-      </>
-    <NavBar/>
+    </div>
+    <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
+    <div className="d-flex conatiner">
+      <div  className="row">
+        {postListItems}
+      </div>
+    </div>
     </>
   )
 }

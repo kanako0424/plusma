@@ -49,9 +49,10 @@ function MypageUserInfo({ userId }) {
 
   }
   return (
-    <div className="d-flex">
+    <div className="">
       <form className="container">
       {error && <Alert variant="primary">{error}</Alert>}
+      <span id="user-icon"><img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン" width="50px"/></span>
         <label htmlFor="nickname">ニックネーム</label>
         <input id="nickname" onChange={inputNickname} value={nickname} className="row col-12"/>
         <label htmlFor="link">メルカリへのリンク</label>

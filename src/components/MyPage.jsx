@@ -43,7 +43,7 @@ function MyPage() {
 
   return (
     <>
-    <Header title={"User Page"}/>
+    <Header title={"My Page"}/>
     <Settings />
     {currentUser.uid ? (
       <>
