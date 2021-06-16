@@ -48,8 +48,8 @@ function MyPage() {
     {currentUser.uid ? (
       <>
       <MypageUserInfo userId={userId}/>
-      <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
-      <div className="d-flex conatiner">
+      <button onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
+      <div className="conatiner">
         <div  className="row">
           {postListItems}
         </div>

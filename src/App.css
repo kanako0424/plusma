@@ -26,18 +26,20 @@ figure {
   margin: 15px auto;
 }
 
-input, textarea, button {
-  margin: 15px;
-  padding: 0px;
+label {
+  margin-top: 20px;
+}
+input, textarea, button, select {
   border: none;
-  border-radius: 15px;
   background-color: #F3EFE4;
   color: #282c34;
   font-weight: 600;
 }
 
-input, textarea {
-  box-shadow: 5px 5px 5px #e2ded4;
+input, textarea, select {
+  margin: 5px !important;
+  padding: 5px !important;
+  border-bottom: #282c34 1px solid;
 }
 
 .submit {
@@ -46,7 +48,7 @@ input, textarea {
   color: #282c34;
   text-align: center;
   background-color: #F9BA32;
-  border-radius: 15px;
+  border-radius: 100px;
   margin: 15px auto;
 }
 
@@ -63,6 +65,10 @@ input[type="checkbox"]{
 p {
   margin-top: 15px !important;
   margin-bottom: 0 !important;
+}
+
+.row {
+  margin: 0 !important;
 }
 
 .header {
@@ -116,7 +122,7 @@ p {
 .post {
   color: #282c34;
   background: #F3EFE4;
-  padding: 10px !important;
+  padding: 10px;
 }
 
 .post a {

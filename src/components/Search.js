@@ -48,7 +48,7 @@ function Search() {
         <input 
           type="text" 
           name="name" 
-          value={keyword} 
+          value={keyword}
           onChange={event => setKeyword(event.target.value)}/>
         <button 
           type="submit" 

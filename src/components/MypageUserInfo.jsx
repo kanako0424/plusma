@@ -54,12 +54,12 @@ function MypageUserInfo({ userId }) {
       {error && <Alert variant="primary">{error}</Alert>}
       <span id="user-icon"><img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン" width="50px"/></span>
         <label htmlFor="nickname">ニックネーム</label>
-        <input id="nickname" onChange={inputNickname} value={nickname} className="row col-12"/>
+        <input id="nickname" onChange={inputNickname} value={nickname} className=" col-12"/>
         <label htmlFor="link">メルカリへのリンク</label>
-        <input id="link" onChange={inputLinkForMercari} value={linkForMercari} className="row col-12"/>
-        <label htmlFor="profileDesc">プロフィール蘭</label>
-        <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className="row col-12"></textarea>
-      <button type="submit" onClick={updateProfile} className="row col-8 justify-content-center">プロフィールを更新</button>
+        <input id="link" onChange={inputLinkForMercari} value={linkForMercari} className="col-12"/>
+        <label htmlFor="profileDesc">プロフィール</label>
+        <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className=" col-12"></textarea>
+      <button type="submit" onClick={updateProfile} className="submit">プロフィールを更新</button>
       </form>
     </div>
   ) 
