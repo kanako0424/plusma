@@ -37,7 +37,7 @@ export default function Dashboard() {
   return (
     <>
       <Header title={"Plusma"}/>
-      <div className="d-flex container">
+      <div className="container">
         <div className="row">
           {postListItems}
         </div>
