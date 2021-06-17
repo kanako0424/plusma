@@ -21,19 +21,20 @@ figure {
   margin: 0px !important;
 }
 
+/* input関連の指定 */
 input, textarea, button, select {
   border: none;
+  border-radius: 3px;
   background-color: #F3EFE4;
   color: #282c34;
   font-weight: 600;
 }
 
-input, textarea, select {
-  padding: 0px 0px !important;
-  /* border-bottom: #282c34 1px solid; */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  background-color: rgb(47, 50, 50, 0.1);
 }
 
-/* input関連の指定 */
 input[type="checkbox"] {
   display: inline;
   width: 25px;
@@ -61,11 +62,11 @@ input[type="checkbox"]+label::before {
   content: "";
   display: inline-block;
   box-sizing: border-box;
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border-radius: 3px;
+  margin-right: 1em;
   background-color: #FFF;
-  margin-right: 5px;
 }
 
 input[type="checkbox"]:checked+label::before {
@@ -81,7 +82,7 @@ input[type="checkbox"]:checked+label::after{
   height: 7px;
   margin-top: 0px;
   top: 25%;
-  left: 1px;
+  left: 3px;
   transform: rotate(-45deg);
   border-bottom: 3px solid;
   border-left: 3px solid;
@@ -98,14 +99,13 @@ input[type="checkbox"]:checked+label::after{
 
 .submit {
   display: inline;
-  padding: 5px 10px;
   color: #282c34;
   text-align: center;
   text-decoration: none;
   background-color: #F9BA32;
   border-bottom: solid 6px #eca100; 
   border-radius: 100px;
-  margin: 15px auto;
+  margin: 0px auto;
 }
 .submit:hover {
   background-color: #eca100;
@@ -134,60 +134,47 @@ input[type="checkbox"]:checked+label::after{
 .display-none {
   display: none;
 }
-
+/* 
 .row {
-  margin: 0 !important;
-}
+  margin: 10px !important;
+} */
 
 /* Header */
 
 .header {
   background-color: #F3EFE4;
-  width: 90%;
-  padding: 20px 5px 30px;
+  padding: 30px 0px;
   margin: auto;
   border-radius: 50px;
-}
-
-.header button {
-  border: none;
-  background: #F3EFE4;
-  height: 100%;
 }
 
 .title {
   font-size: 150%;
   font-weight: 600;
   align-items: center;
-  padding: 0px 5px; 
 }
 
 /* NavBar */
 
 .nav_bar {
   display: flex;
-  margin: auto;
-  width: 40%;
+  width: 100%;
   /* border-radius: 50px; */
 }
 .nav_bar a {
   color: #282c34;
   width: 33%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
 /* Post */
 
-.posts {
-  padding-top: 10vh;
-}
-
 .post {
   color: #282c34;
   background: #F3EFE4;
-  padding: 10px;
+  padding: 10px auto;
 }
 
 .post a {
@@ -217,8 +204,6 @@ input[type="checkbox"]:checked+label::after{
   background-color: #282c34;
   opacity: 0.75;
   color: #F3EFE4;
-  padding: 2px 5px;
-  border-radius: 5px;
 }
 
 /* postDetails */
@@ -242,39 +227,64 @@ input[type="checkbox"]:checked+label::after{
 }
 
 /* Settings */
+.settings {
+  position: relative;
+  line-height: 2.0rem;
+}
 
 .settings > button {
-  position: absolute;
-  top: 24px;
-  right: 40px;
+  position: fixed;
+  top: 70px;
+  padding: 0px 0px;
+  margin-bottom: 10px;
+}
+
+.settings > div {
+  padding: 10px 0px;
+}
+
+.settings h5 {
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.settings a {
+  color: #282c34;
+}
+
+.settings > div > div button {
+  padding: 0px;
 }
 
 /* Userpage & Mypage */
 
-#user-icon > img{
+.user-icon > img {
   width: 50px;
   height: 50px;
   border-radius: 50px;
+  padding: 5px;
 }
 
-.user-page {
+.user-page .my-page {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.created-post-container {
+  width: 100%;
   display: flex;
-  margin: 15px auto;
+  margin: 0 auto;
 }
 
 /* imageArea */
 
 .eye-catch-img {
-  margin: 0px 5px 5px 0px;
   width: 165px;
   object-fit: cover;
   height: 110px;
 }
 
-/* createPost */
-input, select, textarea {
-  width: 100%;
-}
-input:focus, select:focus, textarea:focus {
-  outline: none;
+/* search */
+.search > input {
+  border-bottom: 1px solid #282c34;
 }

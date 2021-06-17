@@ -9,7 +9,7 @@ function NavBar() {
   const plus = <FontAwesomeIcon icon={faPlus} />
   const user = <FontAwesomeIcon icon={faUser} />
   return (
-    <div className="nav_bar">
+    <div className="nav_bar col-8">
       <Link to="/">{home}</Link>
       <Link to="/search">{search}</Link>
       <Link to="/create-post">{plus}</Link>

@@ -276,7 +276,7 @@ function CreatePost() {
             onChange={inputLink} 
           />
         </div>
-        <p>■参考資料</p>
+        <p className="row">■参考資料</p>
         <div className="row mb-3">
           <label htmlFor="rating" className="col-4">
             評定
@@ -315,8 +315,8 @@ function CreatePost() {
             onChange={inputUniversityName}
           />
         </div>
+        <p className="row">■推しポイント!</p>
         <div className="row mb-3">
-        <p>■推しポイント!</p>
           <textarea
             id="description"
             className="col-12"

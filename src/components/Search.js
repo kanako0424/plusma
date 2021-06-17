@@ -43,7 +43,7 @@ function Search() {
     <>
       <Header title={"検索"} />
       <div
-        className="margin-auto"
+        className="search margin-auto"
       >
         <input 
           type="text" 
@@ -59,7 +59,7 @@ function Search() {
           <FontAwesomeIcon icon={ faSearch } />
         </button>
       </div>
-      <div className="d-flex container">
+      <div className="container">
         <div className="row">
           {postListItems}
         </div>

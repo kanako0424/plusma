@@ -3,9 +3,7 @@ import { Link } from "react-router-dom"
 import '../App.css';
 
 function Post({ postId, postName, nickname, price, images }) {
-  console.log(images)
   return (
-    // react-bootstrapでメディアクエリを実装する
     <>
     {images && (
       <figure className="post col-6 col-md-4 col-lg-3">

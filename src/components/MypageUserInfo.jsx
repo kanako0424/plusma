@@ -1,16 +1,13 @@
 import React, {useState, useEffect, useCallback} from 'react'
 import { db } from '../firebase'
 import firebase from 'firebase/app'
-import { Alert } from "react-bootstrap"
 
 function MypageUserInfo({ userId }) {
   const [linkForMercari, setLinkForMercari] = useState('');
   const [nickname, setNickname] = useState('');
   const [profileDesc, setProfileDesc] = useState('');
-  const [error, setError] = useState("")
   
   useEffect(() => {
-    setError("")
     const userRef = db.collection('users').doc(userId);
     userRef.get().then((snapshot) => {
       const userData = snapshot.data();
@@ -40,8 +37,7 @@ function MypageUserInfo({ userId }) {
     }
 
     db.collection('users').doc(userId).set(data, {merge: true}).then(() => {
-      console.log('profile is updated');
-      setError("プロフィールを更新しました");
+      window.alert("プロフィールを更新しました")
     }
     ).catch((err) => {
       console.log(err)
@@ -49,19 +45,40 @@ function MypageUserInfo({ userId }) {
 
   }
   return (
-    <div className="">
+    <>
       <form className="container">
-      {error && <Alert variant="primary">{error}</Alert>}
-      <span id="user-icon"><img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン" width="50px"/></span>
-        <label htmlFor="nickname">ニックネーム</label>
-        <input id="nickname" onChange={inputNickname} value={nickname} className=" col-12"/>
-        <label htmlFor="link">メルカリへのリンク</label>
-        <input id="link" onChange={inputLinkForMercari} value={linkForMercari} className="col-12"/>
-        <label htmlFor="profileDesc">プロフィール</label>
-        <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className=" col-12"></textarea>
-      <button type="submit" onClick={updateProfile} className="submit">プロフィールを更新</button>
+        <div className="row mb-3">
+          <span className="user-icon col-2">
+            <img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン"/>
+          </span>
+          <label htmlFor="nickname"></label>
+          <input
+            id="nickname"
+            onChange={inputNickname}
+            value={nickname}
+            className="col-10"
+          />
+        </div>
+        <div className="row mb-3">
+          <label htmlFor="link" className="col-12 col-md-4 col-md-3">メルカリへのリンク</label>
+          <input
+            id="link"
+            onChange={inputLinkForMercari}
+            value={linkForMercari} className="col-12 col-md-8"/>
+        </div>
+        <div className="row mb-3">
+          <label htmlFor="profileDesc" className="col-12">プロフィール</label>
+          <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className="col-12"></textarea>
+        </div>
+        <button
+          type="submit"
+          onClick={updateProfile}
+          className="submit mb-4"
+        >
+          プロフィールを更新
+        </button>
       </form>
-    </div>
+    </>
   ) 
 }
 

@@ -6,7 +6,6 @@ import MypageUserInfo from './MypageUserInfo';
 import MyPagePost from './MyPagePost'
 import { useAuth } from "../contexts/AuthContext"
 import LoginStatement from './LoginStatement';
-import Settings from './Settings';
 
 function MyPage() {
   const {currentUser} = useAuth()
@@ -44,16 +43,22 @@ function MyPage() {
   return (
     <>
     <Header title={"My Page"}/>
-    <Settings />
     {currentUser.uid ? (
       <>
-      <MypageUserInfo userId={userId}/>
-      <button onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
-      <div className="conatiner">
-        <div  className="row">
-          {postListItems}
+        <MypageUserInfo userId={userId}/>
+        <div className="container">
+          <div className="">
+            <button 
+              onClick={fetchCreatedPosts}
+              className="submit mb-3"
+            >
+              投稿履歴を読み込む
+            </button>
+          </div>
+          <div  className="row created-posts-container">
+            {postListItems}
+          </div>
         </div>
-      </div>
       </>
      ) : (
       <LoginStatement />
