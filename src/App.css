@@ -46,6 +46,56 @@ label {
   margin: 0px !important;
 }
 
+input[type="checkbox"]{
+  display: none;
+}
+
+input[type="checkbox"]+label {
+  display: none;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+input[type="checkbox"]+label::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 3px;
+  background-color: #FFF;
+  margin-right: 5px;
+}
+
+input[type="checkbox"]:checked+label::before {
+  background-color: #F9BA32;
+}
+
+input[type="checkbox"]:checked+label::after{
+  content: "";
+  position: absolute;
+  display: block;
+  box-sizing: border-box;
+  width: 14px;
+  height: 7px;
+  margin-top: 0px;
+  top: 25%;
+  left: 1px;
+  transform: rotate(-45deg);
+  border-bottom: 3px solid;
+  border-left: 3px solid;
+  border-color:  #282c34;
+}
+
+[id="postName"] {
+  font-weight: 700;
+  font-size: 125%;
+  color: #282c34;
+}
+
+/* button関連の指定 */
+
 .submit {
   display: inline;
   padding: 5px 10px;
@@ -68,16 +118,6 @@ label {
   /*下移動 */
   transform: translateY(6px);
 } 
-
-input[type="checkbox"]{
-  box-shadow: none;
-}
-
-[id="postName"] {
-  font-weight: 700;
-  font-size: 125%;
-  color: #282c34;
-}
 
 /* margin-auto, display-noneを指定 */
 .margin-auto {

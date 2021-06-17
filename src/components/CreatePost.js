@@ -204,10 +204,12 @@ function CreatePost() {
               id="memo"
               type="checkbox"
               checked={memo}
-              className=""
               onChange={inputMemo}
             />
-            <label htmlFor="memo" className="pr-4">
+            <label 
+              htmlFor="memo"
+              className="pr-4 d-inline-flex justify-content-center"
+            >
               メモ
             </label>
             <input
@@ -217,7 +219,7 @@ function CreatePost() {
               className=""
               onChange={inputAnswer}
             />
-            <label htmlFor="answer" className="pr-4">
+            <label htmlFor="answer" className="pr-4 d-inline-flex justify-content-center">
               解答
             </label>
           </div>
