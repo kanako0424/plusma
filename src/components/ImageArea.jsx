@@ -50,12 +50,12 @@ function ImageArea(props) {
       <div className="row">
         {images.length > 0 && (
           images.map(image => 
-          <span className="col-6" key={image.id} onClick={() => deleteImage(image.id)}>
+          <span className="" key={image.id} onClick={() => deleteImage(image.id)}>
             <img alt="アイキャッチ画像" src={image.path} className="eye-catch-img"/>
           </span>)
         )}
       </div>
-      <div className="">
+      <div className="mb-3 mt-3">
         <label htmlFor="image">
           <span>商品画像を登録する </span>
           <FontAwesomeIcon height="48px" wight="48px" icon={faImages} size="lg"/>

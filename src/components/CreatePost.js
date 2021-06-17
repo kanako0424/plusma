@@ -160,9 +160,9 @@ function CreatePost() {
     <>
     <Header title={"投稿・編集"}/>
     {currentUser.email ? (
-      <div className="container justify-content-center">
+      <form className="active container justify-content-center">
         <ImageArea images={images} setImages={setImages} />
-        <div className="row mb-4 mt-4">
+        <div className="row mb-3">
           <input 
             type="text" 
             id="postName" 
@@ -172,7 +172,7 @@ function CreatePost() {
             onChange={inputPostName}
           />
         </div>
-        <div className="row mb-2">
+        <div className="row mb-3">
           <label htmlFor="publishedDate" className="col-4">
             出版年
           </label>
@@ -184,44 +184,45 @@ function CreatePost() {
             onChange={inputPublishedDate} 
           />
         </div>
-        <div className="row mb-2">
-          <label htmlFor="price" className="col-4">
+        <div className="row mb-3">
+          <label htmlFor="price" className="col-sm-4">
             価格
           </label>
           <input 
             type="number"
             id="price"
-            className="col-8"
+            className="col-sm-8"
+            placeholder="半角数字で記入"
             value={price}
             onChange={inputPrice} 
           />
         </div>
-        <div className="row d-flex align-content-center mb-2">
+        <div className="row mb-3">
           <span className="col-4">種類</span>
-          <span className="col-1">
+          <div className="">
             <input
-            id="memo" 
-            type="checkbox" 
-            checked={memo} 
-            onChange={inputMemo} 
-          />
-          </span>
-          <label htmlFor="memo" className="col-3">
-            メモ
-          </label>
-          <span className="col-1">
-            <input 
-              id="answer" 
-              type="checkbox"  
-              checked={answer} 
-              onChange={inputAnswer} 
+              id="memo"
+              type="checkbox"
+              checked={memo}
+              className=""
+              onChange={inputMemo}
             />
-          </span>
-          <label htmlFor="answer" className="col-3">
-            解答
-          </label>
+            <label htmlFor="memo" className="pr-4">
+              メモ
+            </label>
+            <input
+              id="answer"
+              type="checkbox"
+              checked={answer}
+              className=""
+              onChange={inputAnswer}
+            />
+            <label htmlFor="answer" className="pr-4">
+              解答
+            </label>
+          </div>
         </div>
-        <div className="row mb-2">
+        <div className="row mb-3">
           <label htmlFor="category" className="col-4">
             カテゴリー
           </label>
@@ -260,20 +261,21 @@ function CreatePost() {
             </optgroup>
           </select>
         </div>
-        <div className="row mb-2">
+        <div className="row mb-3">
           <label htmlFor="link" className="col-4">
             商品リンク
           </label>
           <input 
             type="text" 
             id="link" 
-            className="col-8" 
+            className="col-8"
+            placeholder="商品が買えるリンク"
             value={link}
             onChange={inputLink} 
           />
         </div>
         <p>■参考資料</p>
-        <div className="row mb-2">
+        <div className="row mb-3">
           <label htmlFor="rating" className="col-4">
             評定
           </label>
@@ -281,11 +283,12 @@ function CreatePost() {
             type="number"
             id="rating"
             className="col-8" 
+            placeholder="5段階換算 / 半角で記入"
             value={rating}
             onChange={inputRating}
           />
         </div>
-        <div className="row mb-2">
+        <div className="row mb-3">
           <label htmlFor="scoreOfPracticeExam" className="col-4">
             模試の点数
           </label>
@@ -293,10 +296,11 @@ function CreatePost() {
             id="scoreOfPracticeExam"
             type="number"
             className="col-8"
+            placeholder="100点換算 / 半角で記入"
             value={scoreOfPracticeExam}
             onChange={inputScoreOfPracticeExam} />
         </div>
-        <div className="row mb-2">
+        <div className="row mb-3">
           <label htmlFor="universityName" className="col-4">
             合格大学
           </label>
@@ -304,25 +308,28 @@ function CreatePost() {
             type="text"
             id="universityName"
             className="col-8"
+            placeholder="合格した大学"
             value={universityName}
             onChange={inputUniversityName}
           />
         </div>
-        <div className="row mb-2">
-        <p className="col-12">■推しポイント!</p>
+        <div className="row mb-3">
+        <p>■推しポイント!</p>
           <textarea
             id="description"
             className="col-12"
             rows="5"
-            placeholder="どんなところが役に立ちますか？"
+            placeholder="どのように使った？
+どんなことを書き込んだ？
+買う人に向けたメッセージ"
             onChange={inputDescripion}
             value={description}
           ></textarea>
         </div>
-        <div className="row mb-2 justify-content-center">
-          <button 
-            type="submit" 
-            className=" submit col-4"
+        <div className="row">
+          <button
+            type="submit"
+            className="submit"
             disabled={!postName}
             style={{ maxWidth: "400px" }}
             onClick={addPost}
@@ -330,7 +337,7 @@ function CreatePost() {
             商品情報を保存する
           </button>
         </div>
-      </div>
+      </form>
     ) : (<LoginStatement/>)}
     </>
   )

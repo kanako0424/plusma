@@ -6,7 +6,6 @@ body {
 }
 
 p {
-  margin-top: 15px !important;
   margin-bottom: 0 !important;
 }
 
@@ -22,10 +21,6 @@ figure {
   margin: 0px !important;
 }
 
-label {
-  margin-top: 20px;
-}
-
 input, textarea, button, select {
   border: none;
   background-color: #F3EFE4;
@@ -34,27 +29,45 @@ input, textarea, button, select {
 }
 
 input, textarea, select {
-  margin: 5px !important;
-  padding: 5px !important;
-  border-bottom: #282c34 1px solid;
+  padding: 0px 0px !important;
+  /* border-bottom: #282c34 1px solid; */
 }
 
-
 /* input関連の指定 */
+input[type="checkbox"] {
+  display: inline;
+  width: 25px;
+  justify-content: center;
+  align-items: center;
+}
 
-[for="answer"], [for="memo"] {
-  padding: 0px 10px 0px 10px;
+label {
+  align-items: center;
+  margin: 0px !important;
 }
 
 .submit {
-  display: flex;
+  display: inline;
   padding: 5px 10px;
   color: #282c34;
   text-align: center;
+  text-decoration: none;
   background-color: #F9BA32;
+  border-bottom: solid 6px #eca100; 
   border-radius: 100px;
   margin: 15px auto;
 }
+.submit:hover {
+  background-color: #eca100;
+  border-bottom: solid 6px #da9500;
+}
+.submit:active {
+  margin-top: 6px;
+  border-bottom: none;
+  -webkit-transform: translateY(6px);
+  /*下移動 */
+  transform: translateY(6px);
+} 
 
 input[type="checkbox"]{
   box-shadow: none;
@@ -212,8 +225,16 @@ input[type="checkbox"]{
 /* imageArea */
 
 .eye-catch-img {
-  padding: 5px;
-  width: 100%;
+  margin: 0px 5px 5px 0px;
+  width: 165px;
   object-fit: cover;
-  height: 130px;
+  height: 110px;
+}
+
+/* createPost */
+input, select, textarea {
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
 }

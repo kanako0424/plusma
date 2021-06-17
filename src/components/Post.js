@@ -9,7 +9,7 @@ function Post({ postId, postName, nickname, price, images }) {
     <>
     {images && (
       <figure className="post col-6 col-md-4 col-lg-3">
-        <Link 
+        <Link
           target="_blank" 
           to={{
             pathname: `/posts/${postId}`,
