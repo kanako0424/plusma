@@ -48,6 +48,7 @@ function Search() {
         <input 
           type="text" 
           name="name" 
+          placeholder="投稿のタイトルで検索"
           value={keyword}
           onChange={event => setKeyword(event.target.value)}/>
         <button 

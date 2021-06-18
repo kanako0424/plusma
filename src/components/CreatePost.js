@@ -281,7 +281,7 @@ function CreatePost() {
         </div>
         <p className="row">■参考資料</p>
         <div className="row mb-3">
-          <label htmlFor="rating" className="cpl-6 col-sm-4">
+          <label htmlFor="rating" className="col-6 col-sm-4">
             評定
           </label>
           <input
