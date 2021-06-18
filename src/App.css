@@ -174,7 +174,7 @@ input[type="checkbox"]:checked+label::after{
 .post {
   color: #282c34;
   background: #F3EFE4;
-  padding: 10px auto;
+  padding-bottom: 10px;
 }
 
 .post a {
