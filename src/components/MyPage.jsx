@@ -55,7 +55,7 @@ function MyPage() {
               投稿履歴を読み込む
             </button>
           </div>
-          <div  className="row created-posts-container">
+          <div className="row created-posts-container">
             {postListItems}
           </div>
         </div>

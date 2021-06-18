@@ -54,22 +54,31 @@ function UserPage() {
   return (
     <>
     <Header title={"User Page"}/>
-    <div className="user-page">
-      <div className="">
-      <span id="user-icon" className=""><img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン" width="50px"/></span>
-      <span>{nickname}</span>
-      <span className="" id="link"><a href={linkForMercari} target="_blank" rel="noopener noreferrer">メルカリ</a></span>
+    <div className="user-page container">
+      <div className="row mb-3">
+        <div id="user-icon" className="col-2 d-flex justify-content-center"><img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン" width="50px"/></div>
+        <div className="col-10 container">
+          <span className="row col-12">{nickname}</span>
+          <span className="row col-12" id="link"><a href={linkForMercari} target="_blank" rel="noopener noreferrer">メルカリ</a></span>
+        </div>
       </div>
-      <div className="m-4">
-        <div id="profileDesc">{profileDesc}</div>
-      </div>
-    </div>
-    <button className="submit" onClick={fetchCreatedPosts}>投稿履歴を読み込む</button>
-    <div className="d-flex conatiner">
-      <div  className="row">
-        {postListItems}
+      <div className="row mb-3">
+        <div id="profileDesc" className="col-12">{profileDesc}</div>
       </div>
     </div>
+    <div className="container">
+          <div className="">
+            <button 
+              onClick={fetchCreatedPosts}
+              className="submit mb-3"
+            >
+              投稿履歴を読み込む
+            </button>
+          </div>
+          <div className="row created-posts-container">
+            {postListItems}
+          </div>
+        </div>
     </>
   )
 }
