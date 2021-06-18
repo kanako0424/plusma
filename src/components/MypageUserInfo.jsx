@@ -28,8 +28,6 @@ function MypageUserInfo({ userId }) {
 
   const inputProfileDesc = useCallback(event => {setProfileDesc(event.target.value)}, [setProfileDesc]);
 
-  console.log(auth.currentUser)
-
   const updateProfile = (event) => {
     event.preventDefault();
 

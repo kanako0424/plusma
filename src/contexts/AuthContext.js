@@ -22,6 +22,11 @@ export function AuthProvider({ children }) {
       console.log(error);
     })
   }
+
+  function emailVerification() {
+    return currentUser.sendEmailVerification()
+
+  }
   
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password)
@@ -75,6 +80,7 @@ export function AuthProvider({ children }) {
     currentUser,
     login,
     signup,
+    emailVerification,
     logout,
     resetPassword,
     updateEmail,

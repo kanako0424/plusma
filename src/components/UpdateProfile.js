@@ -43,43 +43,56 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-1">プロフィールの更新</h2>
+      <div className="signup container">
+        <h2 className="text-center m-4">プロフィールの更新</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>メールアドレス</Form.Label>
-              <Form.Control
+          <form>
+            <div className="row mb-4">
+              <label htmlFor="email" className="col-6 col-sm-4">メールアドレス</label>
+              <input
+                id="email"
                 type="email"
                 ref={emailRef}
+                className="col-12 col-sm-8" 
+                placeholder="user@example.com"
                 required
                 defaultValue={currentUser.email}
               />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>パスワード</Form.Label>
-              <Form.Control
+            </div>
+            <div className="row mb-4">
+              <label htmlFor="password" className="col-6 col-sm-4">パスワード</label>
+              <input
+                id="password"
                 type="password"
                 ref={passwordRef}
                 placeholder="変更しない場合は空欄"
+                className="col-12 col-sm-8" required
               />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>パスワードの確認</Form.Label>
-              <Form.Control
+            </div>
+            <div className="row mb-4">
+              <label htmlFor="password-confirm" className="col-6 col-sm-4">パスワードの確認</label>
+              <input
+                id="password-confirm"
                 type="password"
                 ref={passwordConfirmRef}
                 placeholder="変更しない場合は空欄"
+                className="col-12 col-sm-8"
+                require
               />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            </div>
+            <div className="row mb-3">
+            <button
+              disabled={loading}
+              className="submit col-2"
+              type="submit"
+              onClick={handleSubmit}
+            >
               更新
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-1">
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="w-100 text-center mt-2">
         <Link to="/mypage">キャンセル</Link>
       </div>
     </>
