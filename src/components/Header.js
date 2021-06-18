@@ -4,11 +4,9 @@ import Settings from './Settings'
 function Header({title}) {
 
   return (
-    <div className="header container">
-      <div className="row">
-        <div className="title col-4">{title}</div>
-        <NavBar/>
-      </div>
+    <div className="header d-flex">
+      <div className="title">{title}</div>
+      <NavBar/>
       {title==="My Page" && (<Settings />)}
     </div>
   )

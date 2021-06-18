@@ -79,24 +79,22 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
         <div className="mb-3">
         {description} 
         </div>
-        <div className="container">
-          <div className="row">
-            {images.length !== 0 && (
-              images.map(image => (
-                <div className="col-4 col-md-3 col-lg-3" key={image.id}
-                  onClick={() => setSelectedImg(image.path)}
-                >
-                  <div className="thumbnail">
-                    <img className="thumbnail-img" src={image.path} alt="投稿画像"/>
-                  </div>
+        <div className="row">
+          {images.length !== 0 && (
+            images.map(image => (
+              <div className="col-4 col-md-4 col-lg-4" key={image.id}
+                onClick={() => setSelectedImg(image.path)}
+              >
+                <div className="post-details-image-wrap">
+                  <img className="post-details-image" src={image.path} alt="投稿画像"/>
                 </div>
-              ))
-            )}
-          </div>
-          {selectedImg && (
-            <PostDetailsModal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>
+              </div>
+            ))
           )}
         </div>
+        {selectedImg && (
+          <PostDetailsModal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>
+        )}
       </div>
     </div>
     )}
