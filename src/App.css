@@ -219,8 +219,7 @@ input[type="checkbox"]:checked+label::after{
   position: absolute;
   bottom: 0px;
   left: 0px;
-  background-color: #282c34;
-  opacity: 0.75;
+  background-color: rgba(47, 50, 50, 0.5);
   padding: 0 5px;
   color: #F3EFE4;
   border-radius: 3px;
