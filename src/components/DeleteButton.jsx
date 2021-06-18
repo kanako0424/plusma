@@ -27,7 +27,7 @@ function DeleteButton(props) {
   }
 
   return (
-    <div className="row justify-content-center">
+    <div className="row justify-content-center mb-3">
       <button className="col-4 submit" onClick={() => deletePost()}>
         削除する
       </button>

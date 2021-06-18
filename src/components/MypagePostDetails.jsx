@@ -49,10 +49,9 @@ function MypagePostDetails() {
       />
 
       <div width="100%">
-        <EditButton postId={postId}/>
+        <EditButton postId={postId} />
         <DeleteButton post={post} postId={postId}/>
       </div>
-      <NavBar />
       </>
       ) : (
         <NotFound />

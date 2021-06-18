@@ -31,18 +31,22 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
           <tr>
             <th>種類</th>
             <td>
-              <span>
+              <div className="row">
                 <input id="memo" type="checkbox" checked={memo}  readOnly/>
-              </span>
-              <label htmlFor="memo">
-                メモ
-              </label>
-              <span>
+                <label 
+              htmlFor="memo"
+              className="pr-4 d-inline-flex justify-content-center"
+            >
+              メモ
+            </label>
                 <input id="answer" type="checkbox" checked={answer} readOnly/>
-              </span>
-              <label htmlFor="answer">
-                解答
-              </label>
+                <label
+                  htmlFor="answer"
+                  className="pr-4 d-inline-flex justify-content-center"
+                >
+                  解答
+                </label>
+              </div>
             </td>
           </tr>
           <tr>

@@ -173,11 +173,11 @@ function CreatePost() {
           />
         </div>
         <div className="row mb-3">
-          <label htmlFor="publishedDate" className="col-4">
+          <label htmlFor="publishedDate" className="col-6 col-sm-4">
             出版年
           </label>
           <input 
-            className="col-8"
+            className="col-12 col-sm-8"
             id="publishedDate"
             type="month"
             value={publishedDate}
@@ -185,21 +185,21 @@ function CreatePost() {
           />
         </div>
         <div className="row mb-3">
-          <label htmlFor="price" className="col-sm-4">
+          <label htmlFor="price" className="col-6 col-sm-4">
             価格
           </label>
           <input 
             type="number"
             id="price"
-            className="col-sm-8"
+            className="col-12 col-sm-8"
             placeholder="半角数字で記入"
             value={price}
             onChange={inputPrice} 
           />
         </div>
         <div className="row mb-3">
-          <span className="col-4">種類</span>
-          <div className="">
+          <span className="col-6 col-sm-4">種類</span>
+          <div>
             <input
               id="memo"
               type="checkbox"
@@ -219,18 +219,21 @@ function CreatePost() {
               className=""
               onChange={inputAnswer}
             />
-            <label htmlFor="answer" className="pr-4 d-inline-flex justify-content-center">
+            <label
+              htmlFor="answer"
+              className="pr-4 d-inline-flex justify-content-center"
+            >
               解答
             </label>
           </div>
         </div>
         <div className="row mb-3">
-          <label htmlFor="category" className="col-4">
+          <label htmlFor="category" className="col-6 col-sm-4">
             カテゴリー
           </label>
           <select 
             id="category" 
-            className="col-8" 
+            className="col-12 col-sm-8" 
             value={category}
             onChange={inputCategory} 
           >
@@ -264,13 +267,13 @@ function CreatePost() {
           </select>
         </div>
         <div className="row mb-3">
-          <label htmlFor="link" className="col-4">
+          <label htmlFor="link" className="col-sm-4 col-6">
             商品リンク
           </label>
           <input 
             type="text" 
             id="link" 
-            className="col-8"
+            className="col-12 col-sm-8"
             placeholder="商品が買えるリンク"
             value={link}
             onChange={inputLink} 
@@ -278,38 +281,38 @@ function CreatePost() {
         </div>
         <p className="row">■参考資料</p>
         <div className="row mb-3">
-          <label htmlFor="rating" className="col-4">
+          <label htmlFor="rating" className="cpl-6 col-sm-4">
             評定
           </label>
           <input
             type="number"
             id="rating"
-            className="col-8" 
+            className="col-12 col-sm-8" 
             placeholder="5段階換算 / 半角で記入"
             value={rating}
             onChange={inputRating}
           />
         </div>
         <div className="row mb-3">
-          <label htmlFor="scoreOfPracticeExam" className="col-4">
+          <label htmlFor="scoreOfPracticeExam" className="col-6 col-sm-4">
             模試の点数
           </label>
           <input
             id="scoreOfPracticeExam"
             type="number"
-            className="col-8"
+            className="col-12 col-sm-8"
             placeholder="100点換算 / 半角で記入"
             value={scoreOfPracticeExam}
             onChange={inputScoreOfPracticeExam} />
         </div>
         <div className="row mb-3">
-          <label htmlFor="universityName" className="col-4">
+          <label htmlFor="universityName" className="col-6 col-sm-4">
             合格大学
           </label>
           <input
             type="text"
             id="universityName"
-            className="col-8"
+            className="col-12 col-sm-8"
             placeholder="合格した大学"
             value={universityName}
             onChange={inputUniversityName}
