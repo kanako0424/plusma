@@ -29,16 +29,16 @@ export default function Login() {
   return (
     <>
       <div className="container justify-content-center login">
-        <h2 className="text-center mb-4">ログイン</h2>
+        <h2 className="text-center m-4">ログイン</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <form>
           <div className="row mb-4">
             <label htmlFor="email" className="col-6 col-sm-4">メールアドレス</label>
-            <input id="email" className="col-12 col-sm-8" type="email" ref={emailRef} required />
+            <input id="email" className="col-12 col-sm-8" type="email" ref={emailRef}  placeholder="user@exmaple.com" required />
           </div>
           <div className="row mb-4">
             <label htmlFor="password" className="col-6 col-sm-4">パスワード</label>
-            <input id="password" className="col-12 col-sm-8" type="password" ref={passwordRef} required />
+            <input id="password" className="col-12 col-sm-8" type="password" ref={passwordRef} placeholder="password" required />
           </div>
           <div className="row mb-3">
             <button

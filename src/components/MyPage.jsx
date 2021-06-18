@@ -5,7 +5,7 @@ import Header from './Header';
 import MypageUserInfo from './MypageUserInfo';
 import MyPagePost from './MyPagePost'
 import { useAuth } from "../contexts/AuthContext"
-import LoginStatement from './LoginStatement';
+import Login from './Login';
 import Settings from './Settings'
 
 function MyPage() {
@@ -63,7 +63,7 @@ function MyPage() {
         </div>
       </>
      ) : (
-      <LoginStatement />
+      <Login />
      )}
     </>
   )

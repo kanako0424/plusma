@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
 
@@ -29,13 +29,13 @@ export default function ForgotPassword() {
   return (
     <>
       <div className="container justify-content-center login">
-        <h2 className="text-center mb-4">パスワード再設定</h2>
+        <h2 className="text-center m-4">パスワード再設定</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         {message && <Alert variant="success">{message}</Alert>}
         <form>
           <div className="row mb-4">
             <label className="col-6 col-sm-4">メールアドレス</label>
-            <input type="email" ref={emailRef} id="email" className="col-12 col-sm-8" required />
+            <input type="email" ref={emailRef} id="email" placeholder="user@example.com" className="col-12 col-sm-8" required />
           </div>
           <div className="row mb-3">
             <button

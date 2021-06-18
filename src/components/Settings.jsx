@@ -4,8 +4,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { auth } from '../firebase'
 import { Alert } from "react-bootstrap"
 import { Link, useHistory } from "react-router-dom"
-import LoginStatement from "./LoginStatement"
 import { useAuth } from "../contexts/AuthContext"
+import Login from './Login'
 
 function Settings() {
   const currentUser = useAuth().currentUser
@@ -50,7 +50,7 @@ function Settings() {
               </div>
             </> 
           ) : (
-            <LoginStatement/>
+            <Login/>
           )}
           <a target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfi_VBq8nOqhkknxDfTCn3gUdzRD32rJtexpW9wjSzaIKQ3Pw/viewform?usp=sf_link">お問い合わせ</a>
         </div>

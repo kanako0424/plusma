@@ -6,7 +6,7 @@ import '../App.css'
 import Header from './Header';
 import { useAuth } from "../contexts/AuthContext"
 import ImageArea from './ImageArea'
-import LoginStatement from './LoginStatement'
+import Login from './Login'
 
 function CreatePost() {
   const history = useHistory();
@@ -343,7 +343,7 @@ function CreatePost() {
           </button>
         </div>
       </form>
-    ) : (<LoginStatement/>)}
+    ) : (<Login/>)}
     </>
   )
 };

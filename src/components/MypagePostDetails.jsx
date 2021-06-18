@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { db } from "../firebase"
 import PostDetailsPost from './PostDetailsPost';
 import Header from './Header';
-import NavBar from './NavBar'
 import NotFound from './404'
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
