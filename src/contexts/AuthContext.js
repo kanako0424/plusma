@@ -13,7 +13,14 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
   
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password)
+    return auth.createUserWithEmailAndPassword(email, password).then((result) => {
+      return result.user.updateProfile({
+        displayName: 'ゲストさん',
+        photoURL: 'https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a'
+      })
+    }).catch(function(error) {
+      console.log(error);
+    })
   }
   
   function login(email, password) {
@@ -42,15 +49,19 @@ export function AuthProvider({ children }) {
       setLoading(false)
       if (user) {
         // ログイン済みのユーザー情報がfirestoreにあるかをチェック
-        var userDoc = await db.collection('users').doc(user.uid).get();
         const userId = user.uid;
+        var userDoc = await db.collection('users').doc(userId).get();
         if (user.email && !userDoc.exists) {
           // Firestore にユーザー用のドキュメントが作られていなければ作る
           await userDoc.ref.set({
-            nickname: '名無しさん',
+            email: user.email,
             userId: userId,
-            profileDesc: '初めまして',
+            profileDesc: '',
             linkForMercari: '',
+            iconImage: {
+              id: 'defaultImage',
+              path: user.photoURL
+            },
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
           });
         }

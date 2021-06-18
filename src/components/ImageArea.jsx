@@ -1,11 +1,9 @@
-// import {showLoadingAction, hideLoadingAction} from "../../reducks/loading/actions";
 import React, {useCallback} from 'react'
 import { storage } from '../firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 function ImageArea(props) {
 
-  //const dispatch = useDispatch();
   const images = props.images;
 
   const deleteImage = useCallback(async (id) => {

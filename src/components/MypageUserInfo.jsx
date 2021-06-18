@@ -1,8 +1,11 @@
 import React, {useState, useEffect, useCallback} from 'react'
-import { db } from '../firebase'
+import { auth, db } from '../firebase'
 import firebase from 'firebase/app'
+import { useAuth } from "../contexts/AuthContext"
 
 function MypageUserInfo({ userId }) {
+  const { currentUser } = useAuth();
+
   const [linkForMercari, setLinkForMercari] = useState('');
   const [nickname, setNickname] = useState('');
   const [profileDesc, setProfileDesc] = useState('');
@@ -17,13 +20,15 @@ function MypageUserInfo({ userId }) {
     }).catch((err) => {
       console.log(err)
     })
-  }, [userId])
+  }, [])
 
   const inputNickname = useCallback(event => {setNickname(event.target.value)}, [setNickname]);
 
   const inputLinkForMercari = useCallback(event => {setLinkForMercari(event.target.value)}, [setLinkForMercari]);
 
   const inputProfileDesc = useCallback(event => {setProfileDesc(event.target.value)}, [setProfileDesc]);
+
+  console.log(auth.currentUser)
 
   const updateProfile = (event) => {
     event.preventDefault();
@@ -35,6 +40,10 @@ function MypageUserInfo({ userId }) {
       profileDesc: profileDesc,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp()
     }
+
+    currentUser.updateProfile({
+      displayName: nickname,
+    })
 
     db.collection('users').doc(userId).set(data, {merge: true}).then(() => {
       window.alert("プロフィールを更新しました")
@@ -48,15 +57,12 @@ function MypageUserInfo({ userId }) {
     <>
       <form className="container">
         <div className="row mb-3">
-          <span className="user-icon col-2">
-            <img src="https://firebasestorage.googleapis.com/v0/b/plusma-1927f.appspot.com/o/images%2Fuser-icon.png?alt=media&token=4e41d5e7-1b96-47b7-9e2e-ebc7586a1c5a" alt="ユーザーアイコン"/>
-          </span>
-          <label htmlFor="nickname"></label>
+          <label htmlFor="nickname" className="col-md-4">ユーザー名</label>
           <input
             id="nickname"
             onChange={inputNickname}
             value={nickname}
-            className="col-10"
+            className="col-md-8"
           />
         </div>
         <div className="row mb-3">
