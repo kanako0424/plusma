@@ -72,7 +72,13 @@ function MypageUserInfo({ userId }) {
         </div>
         <div className="row mb-3">
           <label htmlFor="profileDesc" className="col-6 col-sm-4">プロフィール</label>
-          <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className="col-12 col-sm-8"></textarea>
+          <textarea
+            id="profileDesc"
+            onChange={inputProfileDesc}
+            value={profileDesc}
+            rows="10"
+            className="col-12 col-sm-8"
+          ></textarea>
         </div>
         <button
           type="submit"

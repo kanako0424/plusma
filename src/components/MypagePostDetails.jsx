@@ -47,7 +47,7 @@ function MypagePostDetails() {
         description={post.description}
       />
 
-      <div width="100%">
+      <div width="container">
         <EditButton postId={postId} />
         <DeleteButton post={post} postId={postId}/>
       </div>

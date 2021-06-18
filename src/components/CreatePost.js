@@ -323,7 +323,7 @@ function CreatePost() {
           <textarea
             id="description"
             className="col-12"
-            rows="5"
+            rows="10"
             placeholder="どのように使った？
 どんなことを書き込んだ？
 買う人に向けたメッセージ"

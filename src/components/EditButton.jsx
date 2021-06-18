@@ -5,7 +5,7 @@ function EditButton(props) {
   
   return (
     <div className="row justify-content-center mb-3">
-      <Link className="col-4 submit" to={{pathname: `/create-post/${props.postId}`}}>
+      <Link className="col-2 submit" to={{pathname: `/create-post/${props.postId}`}}>
         編集する
       </Link>
     </div>
