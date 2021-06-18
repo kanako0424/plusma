@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PostDetailsModal from './PostDetailsModal';
 import UserInfo from './UserInfo';
 
 function PostDetailsPost({postName, authorId, images, publishedDate, price, memo, answer, category, link, rating, scoreOfPracticeExam, universityName, description }) {
 
-  console.log(images)
+  const [selectedImg, setSelectedImg] = useState(null)
+
   return(
     <>
     {images && (
-    <div className="container justify-content-center post-details">
-      <div>
-        <img className="post-details_thumbnail" src={images[0].path} alt="商品サムネイル"/>
+    <div className="container mb-3">
+      <div className="post-details_thumbnail mb-3">
+        <img className="post-details_thumbnail-image" src={images[0].path} alt="商品サムネイル"/>
       </div>
       <p className="mb-1" id="postName">{postName}</p>
       <table className="mb-3" width="100%">
@@ -77,16 +79,23 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
         <div className="mb-3">
         {description} 
         </div>
-        <div className="d-flex container">
-          <div className="row post-details_container">
+        <div className="container">
+          <div className="row">
             {images.length !== 0 && (
               images.map(image => (
-                <div className="col-6 col-md-4 col-lg-3 post-details_img-div" key={image.id}>
-                  <img className="post-details_img" src={image.path} alt="投稿画像"/>
+                <div className="col-4 col-md-3 col-lg-3" key={image.id}
+                  onClick={() => setSelectedImg(image.path)}
+                >
+                  <div className="thumbnail">
+                    <img className="thumbnail-img" src={image.path} alt="投稿画像"/>
+                  </div>
                 </div>
               ))
             )}
           </div>
+          {selectedImg && (
+            <PostDetailsModal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>
+          )}
         </div>
       </div>
     </div>

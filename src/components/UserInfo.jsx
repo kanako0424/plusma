@@ -1,23 +1,34 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { db } from '../firebase';
 
 function UserInfo(props) {
-  const {currentUser} = useAuth()
   const authorId = props.authorId;
+  const [authorName, setAuthorName] = useState()
+  
+  useEffect(() => {
+    db.collection('users').doc(authorId).get()
+      .then((snapshot) => {
+        const nickname = snapshot.data().nickname;
+        setAuthorName(nickname)
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }, [authorId, authorName])
 
   return (
-  <>
-    {authorId ? (
+    <>
+    {authorId && (
       <Link 
         to={{
           pathname: `/users/${authorId}`
         }}
       >
-        {currentUser.displayName}
+        {authorName}
       </Link>
-    ): (<p>投稿者不明</p>)}
-  </>
+    )}
+    </>
   )
 }
 
