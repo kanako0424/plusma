@@ -1,10 +1,15 @@
 /* 元のタグに対しての指定 */
+/* * {
+  outline: 1px solid red;
+} */
 body {
   background-color: #F3EFE4 !important;
   font-weight: 600 !important;
   padding-bottom: 60px;
 }
-
+.row {
+  margin: auto 0 !important;
+}
 p {
   margin-bottom: 0 !important;
 }

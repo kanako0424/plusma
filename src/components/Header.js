@@ -5,7 +5,7 @@ function Header({title}) {
 
   return (
     <div className="header container">
-      <div className="row mb-3">
+      <div className="row">
         <div className="title col-4">{title}</div>
         <NavBar/>
       </div>
