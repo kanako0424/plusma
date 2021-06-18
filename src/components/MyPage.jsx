@@ -6,6 +6,7 @@ import MypageUserInfo from './MypageUserInfo';
 import MyPagePost from './MyPagePost'
 import { useAuth } from "../contexts/AuthContext"
 import LoginStatement from './LoginStatement';
+import Settings from './Settings'
 
 function MyPage() {
   const {currentUser} = useAuth()
@@ -45,6 +46,7 @@ function MyPage() {
     <Header title={"My Page"}/>
     {currentUser.uid ? (
       <>
+       <Settings />
         <MypageUserInfo userId={userId}/>
         <div className="container">
           <div className="">

@@ -29,29 +29,31 @@ function Settings() {
   }
   
   return (
-    <div className="settings">
+    <div className="settings container mb-3">
       <button onClick={() => toggleSetting()}><FontAwesomeIcon icon={faBars} /></button>
-      <div className={display ? null : 'display-none'} >
-        <h5>アカウント設定</h5>
-        {error && <Alert variant="danger">{error}</Alert>}
-        {currentUser ? (
-          <div>
-            <p>Email:{currentUser.email}</p>
-            <div>
-              <Link to="/update-profile">
-                アカウント設定の変更
-              </Link>
-            </div>
-            <div>
-              <button onClick={handleLogout}>
-                ログアウト
-              </button>
-            </div>
-          </div> 
-        ) : (
-          <LoginStatement/>
-        )}
-        <a target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfi_VBq8nOqhkknxDfTCn3gUdzRD32rJtexpW9wjSzaIKQ3Pw/viewform?usp=sf_link">お問い合わせ</a>
+      <div className={display ? null : ('display-none')} >
+        <div>
+          <h5>アカウント設定</h5>
+          {error && <Alert variant="danger">{error}</Alert>}
+          {currentUser ? (
+            <>
+              <p>Email:{currentUser.email}</p>
+              <div>
+                <Link to="/update-profile">
+                  アカウント設定の変更
+                </Link>
+              </div>
+              <div>
+                <button onClick={handleLogout}>
+                  ログアウト
+                </button>
+              </div>
+            </> 
+          ) : (
+            <LoginStatement/>
+          )}
+          <a target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfi_VBq8nOqhkknxDfTCn3gUdzRD32rJtexpW9wjSzaIKQ3Pw/viewform?usp=sf_link">お問い合わせ</a>
+        </div>
       </div>
     </div>
   )

@@ -86,7 +86,7 @@ function PostDetailsPost({postName, authorId, images, publishedDate, price, memo
         <div className="row">
           {images.length !== 0 && (
             images.map(image => (
-              <div className="col-4 col-md-4 col-lg-4" key={image.id}
+              <div className="col-4 col-sm-4" key={image.id}
                 onClick={() => setSelectedImg(image.path)}
               >
                 <div className="post-details-image-wrap">

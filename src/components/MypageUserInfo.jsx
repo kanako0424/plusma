@@ -57,24 +57,24 @@ function MypageUserInfo({ userId }) {
     <>
       <form className="container">
         <div className="row mb-3">
-          <label htmlFor="nickname" className="col-md-4">ユーザー名</label>
+          <label htmlFor="nickname" className="col-6 col-sm-4">ユーザー名</label>
           <input
             id="nickname"
             onChange={inputNickname}
             value={nickname}
-            className="col-md-8"
+            className="col-12 col-sm-8"
           />
         </div>
         <div className="row mb-3">
-          <label htmlFor="link" className="col-12 col-md-4 col-md-3">メルカリへのリンク</label>
+          <label htmlFor="link" className="col-6 col-sm-4">メルカリへのリンク</label>
           <input
             id="link"
             onChange={inputLinkForMercari}
-            value={linkForMercari} className="col-12 col-md-8"/>
+            value={linkForMercari} className="col-12 col-sm-8"/>
         </div>
         <div className="row mb-3">
-          <label htmlFor="profileDesc" className="col-12">プロフィール</label>
-          <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className="col-12"></textarea>
+          <label htmlFor="profileDesc" className="col-6 col-sm-4">プロフィール</label>
+          <textarea id="profileDesc" onChange={inputProfileDesc} value={profileDesc} className="col-12 col-sm-8"></textarea>
         </div>
         <button
           type="submit"
