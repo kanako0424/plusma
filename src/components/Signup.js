@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Card, Alert, ButtonGroup } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
@@ -33,31 +33,36 @@ export default function Signup() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-1">サインアップ</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>メールアドレス</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>パスワード</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>パスワードの確認</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              サインアップ
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+      <div className="signup container">
+        <h2 className="text-center mb-4">サインアップ</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        <form>
+        <div className="row mb-4">
+          <label htmlFor="email" className="col-6 col-sm-4">メールアドレス</label>
+          <input id="email" type="email" ref={emailRef}  className="col-12 col-sm-8" required />
+        </div>
+        <div className="row mb-4">
+          <label htmlFor="password" className="col-6 col-sm-4">パスワード</label>
+          <input id="password" type="password" ref={passwordRef}  className="col-12 col-sm-8" required />
+        </div>
+        <div className="row mb-4">
+          <label htmlFor="password-confirm" className="col-6 col-sm-4">パスワードの確認</label>
+          <input id="password-confirm" type="password" ref={passwordConfirmRef}  className="col-12 col-sm-8" required/>
+        </div>
+        <div className="row mb-3">
+          <button
+            disabled={loading}
+            className="submit"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            サインアップ
+          </button>
+        </div>
+        </form>
+      </div>
       <div className="w-100 text-center mt-2">
-        既にアカウントをお持ちの方はこちら <Link to="/login">ログイン</Link>
+        既にアカウントをお持ちの方→ <Link to="/login">ログイン</Link>
       </div>
     </>
   )

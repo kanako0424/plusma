@@ -28,25 +28,30 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">パスワード再設定</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {message && <Alert variant="success">{message}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>メールアドレス</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              パスワードを再設定する
-            </Button>
-          </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/login">ログイン</Link>
+      <div className="container justify-content-center login">
+        <h2 className="text-center mb-4">パスワード再設定</h2>
+        {error && <Alert variant="danger">{error}</Alert>}
+        {message && <Alert variant="success">{message}</Alert>}
+        <form>
+          <div className="row mb-4">
+            <label className="col-6 col-sm-4">メールアドレス</label>
+            <input type="email" ref={emailRef} id="email" className="col-12 col-sm-8" required />
           </div>
-        </Card.Body>
-      </Card>
+          <div className="row mb-3">
+            <button
+              disabled={loading}
+              className="submit"
+              type="submit"
+              onClick={handleSubmit}
+              >
+              パスワードを再設定する
+            </button>
+          </div>
+        </form>
+        <div className="w-100 text-center mt-3">
+          <Link to="/login">ログイン</Link>
+        </div>
+      </div>
       <div className="w-100 text-center mt-2">
         アカウントの作成 <Link to="/signup">サインアップ</Link>
       </div>

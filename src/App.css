@@ -146,19 +146,17 @@ input[type="checkbox"]:checked+label::after{
   justify-content: center;
   margin: 15px auto;
 }
-/* 
-.list-style-none {
-  list-style: none;
-  display: inline;
-} */
 
 .display-none {
   display: none;
 }
-/* 
-.row {
-  margin: 10px !important;
-} */
+
+/* login */
+
+.login input, .signup input {
+  border-bottom: 1px solid #282c34;
+  border-radius: 0px;
+}
 
 /* Header */
 

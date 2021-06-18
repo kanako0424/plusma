@@ -28,30 +28,35 @@ export default function Login() {
 
   return (
     <>
-      <div className="container justify-content-center">
-        <h2 className="text-center mb-1 col-12">ログイン</h2>
+      <div className="container justify-content-center login">
+        <h2 className="text-center mb-4">ログイン</h2>
         {error && <Alert variant="danger">{error}</Alert>}
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <label htmlFor="email" className="col-4">メールアドレス</label>
-            <input id="email" className="col-8" type="email" ref={emailRef} required />
+        <form>
+          <div className="row mb-4">
+            <label htmlFor="email" className="col-6 col-sm-4">メールアドレス</label>
+            <input id="email" className="col-12 col-sm-8" type="email" ref={emailRef} required />
           </div>
-          <div className="row">
-            <label htmlFor="password" className="col-4">パスワード</label>
-            <input id="password" className="col-8" type="password" ref={passwordRef} required />
+          <div className="row mb-4">
+            <label htmlFor="password" className="col-6 col-sm-4">パスワード</label>
+            <input id="password" className="col-12 col-sm-8" type="password" ref={passwordRef} required />
           </div>
-          <div className="row">
-            <button disabled={loading} className="submit col-4" type="submit">
+          <div className="row mb-3">
+            <button
+              disabled={loading}
+              className="submit"
+              type="submit"
+              onClick={handleSubmit}
+            >
               ログイン
             </button>
           </div>
         </form>
-        <div className="w-100 text-center mt-3">
+        <div className="w-100 text-center mt-4">
           <Link to="/forgot-password">パスワードを忘れた方はこちら</Link>
         </div>
       </div>
     <div className="w-100 text-center mt-2">
-      アカウントの作成 <Link to="/signup">サインアップ</Link>
+      <Link to="/signup">アカウントの作成</Link>
     </div>
     </>
   )
