@@ -16,11 +16,13 @@ import NotFound from './404'
 import UserPage from "./UserPage"
 import MypagePostDetails from "./MypagePostDetails"
 /*eslint no-undef: "error"*/
+import Head from "./Head"
 
 function App() {
 
   return (
-    <div>
+    <>
+      <Head />
       <Router>
         <Switch>
           <Route path="/search" component={Search} />
@@ -41,7 +43,7 @@ function App() {
           </AuthProvider>
         </Switch>
       </Router>
-    </div>
+    </>
   )
 }
 

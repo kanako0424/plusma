@@ -151,13 +151,6 @@ input[type="checkbox"]:checked+label::after{
   display: none;
 }
 
-/* login */
-
-.login input, .signup input {
-  border-bottom: 1px solid #282c34;
-  border-radius: 0px;
-}
-
 /* Header */
 
 .header {
@@ -318,10 +311,5 @@ input[type="checkbox"]:checked+label::after{
   width: 165px;
   height: calc(165px*0.6);
   object-fit: contain;
-}
-
-/* search */
-.search > input {
-  border-bottom: 1px solid #282c34;
 }
 
