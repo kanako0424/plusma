@@ -17,7 +17,7 @@ function MyPage() {
     db.collection('posts')
       .where('authorId', '==', userId)
       .where("isDeleted", "==", false)
-      .get().then(snapshot => {
+      .onSnapshot(snapshot => {
       const postArray = snapshot.docs.map(doc => {
         return {
           postName: doc.postName,

@@ -1,7 +1,10 @@
 import React from 'react'
+import { useHistory } from "react-router-dom"
 import { db } from "../firebase"
 
 function DeleteButton(props) {
+  const history = useHistory();
+
 
   const deletePost = () => {
     //削除ボタンが押された時の挙動を記入する
@@ -9,14 +12,14 @@ function DeleteButton(props) {
 
       db.collection('posts').doc(props.postId).set({isDeleted: true}, {merge: true})
       .then(() => {
-        console.log('deleted!')
+        return
       })
       .catch(err => {console.log(err)});
 
       db.collection('users').doc(props.post.authorId).collection('createdPosts').doc(props.postId).set({isDeleted: true}, {merge: true})
       .then(() => {
-        console.log('deleted from createdposts, too.')
         alert('投稿は正常に削除されました')
+        history.push('/mypage/')
       })
       .catch(err => {
         alert(err,'投稿は削除できませんでした')

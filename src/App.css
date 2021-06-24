@@ -49,18 +49,14 @@ input, textarea, button, select {
   background-color: #F3EFE4;
   color: #282c34;
   font-weight: 600;
+  white-space: pre-wrap;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
   background-color: rgba(47, 50, 50, 0.1);
-}
-
-input[type="checkbox"] {
-  display: inline;
-  width: 25px;
-  justify-content: center;
-  align-items: center;
 }
 
 label {
@@ -110,7 +106,7 @@ input[type="checkbox"]:checked+label::after{
   border-color:  #282c34;
 }
 
-[id="postName"] {
+#postName {
   font-weight: 700;
   font-size: 125%;
   color: #282c34;

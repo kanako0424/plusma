@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { db } from "../firebase"
 import PostDetailsPost from './PostDetailsPost';
 import Header from './Header';
-import NotFound from './404'
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 
@@ -26,7 +25,7 @@ function MypagePostDetails() {
   //ここからはreaturn
   return (
     <>
-    {images ? ( !isDeleted ? (
+    {images && ( !isDeleted && (
       <>
       <Header title={"商品詳細"}/>
       <PostDetailsPost 
@@ -52,10 +51,7 @@ function MypagePostDetails() {
         <DeleteButton post={post} postId={postId}/>
       </div>
       </>
-      ) : (
-        <NotFound />
-      )) : (<NotFound />)
-      } 
+      ))} 
     </> 
   )
 }
